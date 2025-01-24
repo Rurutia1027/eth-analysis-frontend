@@ -33,6 +33,10 @@ jobs:
       - name: Build the project
         run: |
           cd eth-analysis-ui && yarn build  
+
+      - name: Run tests
+        run: |
+          cd eth-analysis-ui && yarn test --ci --runInBand
           
       - name: Upload build artifacts (optional)
         uses: actions/upload-artifact@v3
