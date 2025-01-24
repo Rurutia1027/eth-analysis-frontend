@@ -5,20 +5,22 @@ import SiteMetadata from "../site-metadata";
 import { SWRConfig } from "swr";
 
 type StaticProps = {
-    fallback: {
-        "/api/v2/fees/base-fee-per-gas": ""
-    };
+    fallback: Record<string, unknown>;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-    const [] = await Promise.all([]);
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+    // Simulate fetching or leave as an empty Promise.all for now.
+    await Promise.all([]);
+
     return {
-        props: {},
-        revalidate: 60 * 60 * 1000,
+        props: {
+            fallback: {}, // Default fallback value
+        },
+        revalidate: 60 * 60 * 1000, // 1 hour revalidation
     };
 };
 
-const StoryPreview: NextPage<StaticProps> = ({ fallback }) => (
+const StoryPreview: NextPage<StaticProps> = ({ fallback = {} }) => (
     <>
         <Head>
             <title>ultrasound.money</title>
@@ -29,9 +31,7 @@ const StoryPreview: NextPage<StaticProps> = ({ fallback }) => (
             />
             <meta property="og:title" content={SiteMetadata.title} />
             <meta property="og:description" content={SiteMetadata.description} />
-            {/* When sharing the site on twitter, twitter adds our metadata, this adds title value, so we remove it. To not spend a lot of time removing our metadata from every shared link we're disabling twitter metadata for now.*/}
             <meta property="og:url" content="https://ultrasound.money" />
-            {/* This serves our Plausible analytics script. We use cloudflare workers to make this possible. The name is intentionally vague as suggested in the Plausible docs.*/}
         </Head>
 
         <Script
@@ -52,3 +52,5 @@ const StoryPreview: NextPage<StaticProps> = ({ fallback }) => (
         </SWRConfig>
     </>
 );
+
+export default StoryPreview;

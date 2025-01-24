@@ -14,7 +14,7 @@ const Custom404 = () => (
     <a
       className="cursor-pointer text-slate-200 active:brightness-90"
       href="https://ultrasound.money/"
-      ref="noreferrer"
+      rel="noopener noreferrer"
       style={{
         color: "#B5BDDB",
         marginLeft: "0.5rem",
