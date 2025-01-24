@@ -1,9 +1,7 @@
-# **eth-analysis UI** 🚀
+# **Eth-Analysis UI** 🚀
 
 ## **📖 Overview**
 The **eth-analysis UI** is a modern Ethereum data analysis platform developed with **TypeScript**, **Next.js**, **Tailwind CSS**, and **SCSS**. This is a sub-project located under the `react-ts-projects` directory in the repository.
-
-GitHub: [Rurutia1027](https://github.com/Rurutia1027)
 
 ---
 
@@ -40,7 +38,7 @@ yarn install
 yarn dev
 ```
 
-### ***4️⃣ Build for Production**
+### **4️⃣ Build for Production**
 ```bash 
 yarn build
 ```
@@ -78,6 +76,19 @@ react-ts-projects/
 ├── tsconfig.tsbuildinfo   # Incremental TypeScript build information
 └── yarn.lock              # Yarn lock file for dependencies
 ```
+---
+
+## 💡 Contribution
+
+We welcome contributions! If you’d like to help improve the eth-analysis UI, follow these steps:
+
+
+---
+## 🎉 Happy Coding!
+
+Thanks for checking out eth-analysis UI! We’re always happy to have more contributors. If you have any questions or need help getting started, don’t hesitate to reach out.
+
+Happy coding and enjoy exploring Ethereum data! 🚀
 
 ---
 
@@ -87,5 +98,5 @@ react-ts-projects/
 
 ---
 
-## 📝 License
+## 📜 License
 This project is licensed under the [MIT License](./LICENSE).
