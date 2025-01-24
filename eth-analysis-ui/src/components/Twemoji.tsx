@@ -73,11 +73,12 @@ const Twemoji: FC<{
                     return child;
                 }
 
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 return React.cloneElement(child as any, {
                     ref: (ref: HTMLElement) => {
                         refList.current[index] = ref;
                     },
-                    className: `${child.props.className}${
+                    className: `${child.props.className ?? ""}${
                         replaceDone ? "" : " invisible"
                     }`,
                 });
