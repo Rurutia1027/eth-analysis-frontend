@@ -3,12 +3,15 @@ name: Build React TypeScript Project
 on:
   push:
     branches:
-      - master # Triggers on push to the master branch
+      - master  # Triggers on push to the master branch
   pull_request:
-    types:
-      - closed # Triggers when a PR is closed (merged or just closed)
     branches:
-      - master # Only triggers for pull requests that target the master branch
+      - "*"  # Trigger on any pull request to any branch (including master)
+    types:
+      - opened    # Trigger when a PR is opened
+      - synchronize  # Trigger when a PR is updated (committed to)
+      - reopened   # Trigger when a PR is reopened
+      - closed     # Trigger when a PR is closed (merged or just closed)
 
 jobs:
   build:
@@ -25,14 +28,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn install
+          cd eth-analysis-ui && yarn install
 
       - name: Build the project
         run: |
-          yarn build  # Make sure you have a build script in your package.json
-
+          cd eth-analysis-ui && yarn build  
+          
       - name: Upload build artifacts (optional)
         uses: actions/upload-artifact@v3
         with:
           name: react-build
-          path: ./build
+          path: ./eth-analysis-ui/build
