@@ -15,6 +15,7 @@ module.exports = {
     "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/consistent-type-imports": "warn",
     "@typescript-eslint/no-misused-promises": "off",
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }]
   },
   // rules: {
   //   "react-hooks/rules-of-hooks": "error",
@@ -22,5 +23,6 @@ module.exports = {
   //   "react/prop-types": "off",
   //   "@typescript-eslint/camelcase": "off",
   //   "@typescript-eslint/explicit-function-return-type": ["warn"],
+  //
   // },
 };
