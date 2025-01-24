@@ -5,7 +5,9 @@ import SiteMetadata from "../site-metadata";
 import { SWRConfig } from "swr";
 
 type StaticProps = {
-    fallback: {};
+    fallback: {
+        "/api/v2/fees/base-fee-per-gas": ""
+    };
 };
 
 export const getStaticProps: GetStaticProps = async () => {
