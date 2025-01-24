@@ -1,11 +1,9 @@
 name: Deploy React TypeScript Project
 
 on:
-  workflow_dispatch: # Manual trigger for deployment
-  # Or use a tag-based trigger
-  # push:
-  #   tags:
-  #     - 'v*'  # Trigger on version tags like 'v1.0.0'
+  push:
+    branches:
+      - master  
 
 jobs:
   deploy:
@@ -18,26 +16,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16" # Same version as used in build.yml
+          node-version: "18"
 
       - name: Install dependencies
         run: |
+          cd eth-analysis-ui  
           yarn install
 
-      - name: Build the project (optional - can reuse artifacts from build job)
+      - name: Build the project
         run: |
-          yarn build  # Ensure build is up to date before deploying
+          cd eth-analysis-ui  
+          yarn build
 
-      - name: Deploy to your hosting platform
+      - name: Deploy to production
         run: |
-          # Replace with your deployment command, e.g., for Netlify, Vercel, or a custom server
-          # For example:
-          # vercel --prod  # if you're deploying with Vercel
-          # or
-          # netlify deploy --prod  # if you're deploying with Netlify
-          # or SSH into your server and copy the build folder
-          echo "Deploying the build to the server..."  # Replace this with your deployment steps
-
-      - name: Notify deployment status (optional)
-        run: |
-          echo "Deployment completed successfully!"
+          cd eth-analysis-ui
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}

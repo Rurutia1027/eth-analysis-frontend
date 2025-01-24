@@ -25,14 +25,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          yarn install
+          cd eth-analysis-ui && yarn install
 
       - name: Build the project
         run: |
-          yarn build  # Make sure you have a build script in your package.json
-
+          cd eth-analysis-ui && yarn build  
+          
       - name: Upload build artifacts (optional)
         uses: actions/upload-artifact@v3
         with:
           name: react-build
-          path: ./build
+          path: ./eth-analysis-ui/build
