@@ -55,16 +55,10 @@ react-ts-projects/
 ├── prettier.config.js     # Prettier configuration for code formatting
 ├── public/                # Public assets like images and static files
 ├── src/                   # Source code for the project
-│   ├── App.css            # Main app-specific CSS
-│   ├── App.test.tsx       # Tests for the App component
-│   ├── App.tsx            # Main App component
 │   ├── assets/            # Project-specific assets
 │   ├── components/        # Reusable React components
 │   ├── contexts/          # React context implementations
 │   ├── hooks/             # Custom React hooks
-│   ├── index.css          # Global styles
-│   ├── index.tsx          # Application entry point
-│   ├── logo.svg           # Logo for the project
 │   ├── mainsite/          # Core site-related components
 │   ├── pages/             # Next.js pages
 │   ├── relay/             # GraphQL relay implementation  
