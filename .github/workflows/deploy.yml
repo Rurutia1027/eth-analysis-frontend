@@ -1,0 +1,43 @@
+name: Deploy React TypeScript Project
+
+on:
+  workflow_dispatch: # Manual trigger for deployment
+  # Or use a tag-based trigger
+  # push:
+  #   tags:
+  #     - 'v*'  # Trigger on version tags like 'v1.0.0'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # Same version as used in build.yml
+
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      - name: Build the project (optional - can reuse artifacts from build job)
+        run: |
+          yarn build  # Ensure build is up to date before deploying
+
+      - name: Deploy to your hosting platform
+        run: |
+          # Replace with your deployment command, e.g., for Netlify, Vercel, or a custom server
+          # For example:
+          # vercel --prod  # if you're deploying with Vercel
+          # or
+          # netlify deploy --prod  # if you're deploying with Netlify
+          # or SSH into your server and copy the build folder
+          echo "Deploying the build to the server..."  # Replace this with your deployment steps
+
+      - name: Notify deployment status (optional)
+        run: |
+          echo "Deployment completed successfully!"
