@@ -3,7 +3,7 @@ name: Deploy React TypeScript Project
 on:
   push:
     branches:
-      - master  
+      - close  
 
 jobs:
   deploy:
