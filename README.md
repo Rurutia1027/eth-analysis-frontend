@@ -1,6 +1,4 @@
-# **Eth-Analysis UI** 🚀
-
-[![Build React TypeScript Project](https://github.com/Rurutia1027/react-ts-projects/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Rurutia1027/react-ts-projects/actions/workflows/build.yml)
+# **Eth-Analysis UI** 🚀  [![Build React TypeScript Project](https://github.com/Rurutia1027/react-ts-projects/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Rurutia1027/react-ts-projects/actions/workflows/build.yml)
 
 ## **📖 Overview**
 The **eth-analysis UI** is a modern Ethereum data analysis platform developed with **TypeScript**, **Next.js**, **Tailwind CSS**, and **SCSS**. This is a sub-project located under the `react-ts-projects` directory in the repository.
