@@ -26,5 +26,6 @@ yarn-error.log*
 .next 
 yarn.lock
 package-lock.json
+tsconfig.tsbuildinfo
 .env 
 /.idea/
