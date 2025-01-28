@@ -29,3 +29,6 @@ package-lock.json
 tsconfig.tsbuildinfo
 .env 
 /.idea/
+
+*storybook.log
+node_modules/
