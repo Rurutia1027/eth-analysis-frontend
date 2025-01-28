@@ -4,8 +4,9 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:storybook/recommended"
   ],
-  ignorePatterns: ["next.config.js", "tailwind.config.js"],
+  ignorePatterns: ["src/stories/**", "next.config.js", "tailwind.config.js"],
   parserOptions: {
     project: ["tsconfig.json"],
   },
