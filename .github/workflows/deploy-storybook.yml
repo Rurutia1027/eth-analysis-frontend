@@ -13,8 +13,11 @@ on:
       - "*"
 
 jobs: 
-  deploy-storybook: 
+  install-dependencies:
     runs-on: ubuntu-latest
+    outputs:
+      node_modules: ${{ steps.cache.outputs.node_modules }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,8 +28,42 @@ jobs:
           node-version: 18 
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile && yarn add vercel
-        working-directory: eth-analysis-ui
+        run: |
+          yarn install --frozen-lockfile  
+          yarn add vercel
+        working-directory: eth-analysis-ui      
+
+      - name: Check vercel installation
+        run: |
+          vercel --version
+        working-directory: eth-analysis-ui    
+          
+      - name: Cache node_modules
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: eth-analysis-ui/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('eth-analysis-ui/package-lock.json') }}
+
+  deploy-storybook:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 18 
+
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        with:
+          path: eth-analysis-ui/node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('eth-analysis-ui/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
 
       - name: Build Storybook
         run: yarn build-storybook --output-dir=storybook-static
