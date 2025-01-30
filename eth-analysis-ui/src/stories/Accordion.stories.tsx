@@ -62,3 +62,21 @@ export const LongContent: Story = {
       await expect(accordionItem).toBeInTheDocument(); 
   },
 };
+
+
+// add a normal story to .stories.tsx this try to trigger and findout 
+// whether vercel pipeline will be triggered by this commit 
+export const Normal: Story = {
+  args: {
+    title: "This is a very long accordion title that will test the layout and how it wraps around on different screen sizes",
+    text: `This is a very long content for the accordion. It should demonstrate how the accordion handles large amounts of text. 
+        It can have multiple paragraphs and details. For example, we can talk about various concepts here. Maybe some technical details, 
+        like how a particular algorithm works or how a software system is designed. We can also mention some real-world use cases and 
+        benefits of using such a system. Overall, it's a comprehensive description that should show the flexibility of the accordion component.`,
+  },
+  play: async ({ canvasElement }) => {
+      const canvas = within(canvasElement);
+      const accordionItem = canvas.getByRole('accordion'); 
+      await expect(accordionItem).toBeInTheDocument(); 
+  },
+};
