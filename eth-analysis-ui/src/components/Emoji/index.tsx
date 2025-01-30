@@ -28,7 +28,7 @@ const whiteMap: Record<SupportedWhiteEmoji, StaticImageData> = {
   link: linkSvg as StaticImageData,
 } as const;
 
-type WhiteEmojiProps = {
+export type WhiteEmojiProps = {
   alt: ImageProps["alt"];
   className?: string;
   layout?: ImageProps["layout"];
@@ -54,7 +54,7 @@ export const WhiteEmoji: FC<WhiteEmojiProps> = ({
   </span>
 );
 
-type ColoredEmojiProps = {
+export type ColoredEmojiProps = {
   alt: ImageProps["alt"];
   layout?: ImageProps["layout"];
   name: SupportedColoredEmoji;

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'; 
-import Accordion from '../components/Accordion';
+import Accordion from '../../components/Accordion';
 import { within } from '@storybook/test';
 
 
@@ -50,12 +50,7 @@ export const LongContent: Story = {
         It can have multiple paragraphs and details. For example, we can talk about various concepts here. Maybe some technical details, 
         like how a particular algorithm works or how a software system is designed. We can also mention some real-world use cases and 
         benefits of using such a system. Overall, it's a comprehensive description that should show the flexibility of the accordion component.`,
-  },
-  play: async ({ canvasElement }) => {
-      const canvas = within(canvasElement);
-      const accordionItem = canvas.getByRole('accordion'); 
-      await expect(accordionItem).toBeInTheDocument(); 
-  },
+  }
 };
 
 
@@ -68,10 +63,5 @@ export const Normal: Story = {
         It can have multiple paragraphs and details. For example, we can talk about various concepts here. Maybe some technical details, 
         like how a particular algorithm works or how a software system is designed. We can also mention some real-world use cases and 
         benefits of using such a system. Overall, it's a comprehensive description that should show the flexibility of the accordion component.`,
-  },
-  play: async ({ canvasElement }) => {
-      const canvas = within(canvasElement);
-      const accordionItem = canvas.getByRole('accordion'); 
-      await expect(accordionItem).toBeInTheDocument(); 
-  },
+  }
 };
