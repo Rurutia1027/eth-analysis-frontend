@@ -3,7 +3,7 @@ name: Deploy Storybook to Vercel
 on: 
   push: 
    branches:
-    - main 
+    - master 
    paths:
     - "src/stories/**/*.stories.@(ts|tsx)"
     - "src/stories/*.stories.@(ts|tsx)"
