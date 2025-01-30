@@ -5,8 +5,8 @@ on:
    branches:
     - master 
    paths:
-    - "src/stories/**/*.stories.@(ts|tsx)"
-    - "src/stories/*.stories.@(ts|tsx)"
+    - "eth-analysis-ui/src/stories/**/*.stories.@(ts|tsx)"
+    - "eth-analysis-ui/src/stories/*.stories.@(ts|tsx)"
     
 jobs: 
   deploy-storybook: 
@@ -22,9 +22,11 @@ jobs:
     
     - name: Install dependencies 
       run: yarn install --frozen-lockfile 
+      working-directory: eth-analysis-ui
 
     - name: Build Storybook 
       run: yarn build-storybook --output-dir=storybook-static 
+      working-directory: eth-analysis-ui
 
     - name: Deploy Storybook to Vercel
-      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --prod -cwd storybook-static
+      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --prod -cwd --cwd eth-analysis-ui
