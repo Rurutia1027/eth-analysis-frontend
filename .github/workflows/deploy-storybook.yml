@@ -33,6 +33,6 @@ jobs:
         working-directory: eth-analysis-ui
 
       - name: Deploy Storybook to Vercel
-        run: vercel --prod --token=$VERCEL_TOKEN
+        run: ./node_modules/.bin/vercel --prod --token=$VERCEL_TOKEN
         env: 
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
