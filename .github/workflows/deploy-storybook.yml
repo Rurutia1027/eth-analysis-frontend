@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       node_modules: ${{ steps.cache.outputs.node_modules }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,17 +26,17 @@ jobs:
         with: 
           node-version: 18 
 
-      - name: Install dependencies
+      - name: Install dependencies and vercel
         run: |
-          yarn install --frozen-lockfile  
+          yarn install --frozen-lockfile
           yarn add vercel
-        working-directory: eth-analysis-ui      
+        working-directory: eth-analysis-ui
 
       - name: Check vercel installation
         run: |
-          vercel --version
-        working-directory: eth-analysis-ui    
-          
+          npx vercel --version  # Ensure the local vercel version is accessible
+        working-directory: eth-analysis-ui
+
       - name: Cache node_modules
         id: cache
         uses: actions/cache@v3
@@ -70,6 +69,7 @@ jobs:
         working-directory: eth-analysis-ui
 
       - name: Deploy Storybook to Vercel
-        run: ./node_modules/.bin/vercel --prod --token=$VERCEL_TOKEN
+        run: |
+          npx vercel --prod --token=$VERCEL_TOKEN   
         env: 
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
