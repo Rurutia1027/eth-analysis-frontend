@@ -39,7 +39,7 @@ jobs:
           cd eth-analysis-ui && yarn test --ci --runInBand
           
       - name: Upload build artifacts (optional)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: react-build
           path: ./eth-analysis-ui/build
