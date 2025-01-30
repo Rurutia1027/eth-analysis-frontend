@@ -14,6 +14,7 @@ The **eth-analysis UI** is a modern Ethereum data analysis platform developed wi
 - **Tailwind CSS**: Utility-first CSS framework for responsive designs.
 - **SCSS**: Modular and reusable styling.
 - **Yarn**: Dependency and script management.
+- **StoryBook**: Frontend UI Component Test Framework. 
 
 ---
 
@@ -26,25 +27,51 @@ The **eth-analysis UI** is a modern Ethereum data analysis platform developed wi
 
 ## **🚀 Getting Started**
 
-### **1️⃣ Clone the Repository**
+### Deploy Eth-Analysis-UI 
+
+#### **1️⃣ Clone the Repository**
 ```bash
 git clone https://github.com/Rurutia1027/react-ts-projects.git
 ```
 
-### **2️⃣ Install Dependencies**
+#### **2️⃣ Install Dependencies**
 ```bash 
 yarn install
 ```
 
-### **3️⃣ Start Development Server**
+#### **3️⃣ Start Development Server**
 ```bash 
 yarn dev
 ```
 
-### **4️⃣ Build for Production**
+#### **4️⃣ Build for Production**
 ```bash 
 yarn build
+# then open http://localhost:3000 
 ```
+
+### Deploy Eth-Analysis-UI Project's StoryBook Web Page 
+#### **1️⃣ Clone the Repository**
+```bash
+git clone https://github.com/Rurutia1027/react-ts-projects.git
+```
+
+#### **2️⃣ Install Dependencies**
+```bash
+yarn install 
+```
+
+#### **3️⃣ Build StoryBook**
+```bash
+yarn build-storybook # this command has already been configured in the package.json 
+```
+
+#### **4️⃣ Set up StoryBook Web Page**
+```bash
+yarn storybook  # this command has already been declared in the package.json 
+# then open http://localhost:6006 
+```
+
 --- 
 
 ## 📂 **Folder Structure**
