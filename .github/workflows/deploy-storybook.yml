@@ -71,5 +71,4 @@ jobs:
       - name: Deploy Storybook to Vercel
         run: |
           npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
-          npx serve storybook-static
         working-directory: eth-analysis-ui
