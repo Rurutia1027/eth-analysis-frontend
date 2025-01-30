@@ -1,40 +1,38 @@
-name: Deploy Storybook to Vercel 
+name: Deploy Storybook to Vercel
 
 on: 
   push: 
-   branches:
-    - master 
-   paths:
-    - "eth-analysis-ui/src/stories/**/*.stories.@(ts|tsx)"
-    - "eth-analysis-ui/src/stories/*.stories.@(ts|tsx)"
-    - "eth-analysis-ui/.storybook/*"
+    branches:
+      - master
+    paths:
+      - "eth-analysis-ui/src/stories/**/*.stories.@(ts|tsx)"
+      - "eth-analysis-ui/src/stories/*.stories.@(ts|tsx)"
+      - "eth-analysis-ui/.storybook/*"
   pull_request:
     branches:
       - "*"
-    
+
 jobs: 
   deploy-storybook: 
-   runs-on: ubuntu-latest 
-   steps:
-    - name: Checkout repository 
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install Node.js 
-      uses: actions/setup-node@v4 
-      with: 
-        node-version: 18 
-    
-    - name: Install dependencies 
-      run: yarn install --frozen-lockfile && yarn add vercel 
-      working-directory: eth-analysis-ui
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 18 
 
-    - name: Build Storybook 
-      run: yarn build-storybook --output-dir=storybook-static 
-      working-directory: eth-analysis-ui
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile && yarn add vercel
+        working-directory: eth-analysis-ui
 
-    - name: Deploy Storybook to Vercel
-      run: |
-        yarn global add vercel  # Install vercel globally
-        vercel --prod --token=$VERCEL_TOKEN
-      env: 
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }} 
+      - name: Build Storybook
+        run: yarn build-storybook --output-dir=storybook-static
+        working-directory: eth-analysis-ui
+
+      - name: Deploy Storybook to Vercel
+        run: vercel --prod --token=$VERCEL_TOKEN
+        env: 
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
