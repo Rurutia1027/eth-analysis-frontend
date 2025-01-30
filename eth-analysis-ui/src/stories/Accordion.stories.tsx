@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'; 
 import Accordion from '../components/Accordion';
-import { action } from '@storybook/addon-actions';
 import { within } from '@storybook/test';
-
-import BodyText from "../components/TextNext/BodyText";
-import Twemoji from "../components/Twemoji";
-import styles from "./Accordion.module.scss";
 
 
 // Meta information for the story 
