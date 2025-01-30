@@ -7,7 +7,7 @@ import githubSvg from "./github-slateus.svg";
 import type { StaticImageData } from "next/image";
 import Image from "next/legacy/image";
 
-type ContactProps = {
+export type ContactProps = {
   alt: string;
   children: ReactNode;
   href: string;
