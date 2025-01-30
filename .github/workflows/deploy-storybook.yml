@@ -1,0 +1,30 @@
+name: Deploy Storybook to Vercel 
+
+on: 
+  push: 
+   branches:
+    - main 
+   paths:
+    - "src/stories/**/*.stories.@(ts|tsx)"
+    - "src/stories/*.stories.@(ts|tsx)"
+    
+jobs: 
+  deploy-storybook: 
+   runs-on: ubuntu-latest 
+   steps:
+    - name: Checkout repository 
+      uses: actions/checkout@v4
+
+    - name: Install Node.js 
+      uses: actions/setup-node@v4 
+      with: 
+        node-version: 18 
+    
+    - name: Install dependencies 
+      run: yarn install --frozen-lockfile 
+
+    - name: Build Storybook 
+      run: yarn build-storybook --output-dir=storybook-static 
+
+    - name: Deploy Storybook to Vercel
+      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --prod -cwd storybook-static
