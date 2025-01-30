@@ -4,6 +4,9 @@
 The **eth-analysis UI** is a modern Ethereum data analysis platform developed with **TypeScript**, **Next.js**, **Tailwind CSS**, and **SCSS**. This is a sub-project located under the `react-ts-projects` directory in the repository.
 
 ---
+- **Frontend Deployment**: [Frontend Deployment](https://eth-analysis-ui.vercel.app/)
+- **Storybook Deployment**: [Storybook Deployment](https://eth-storybook.vercel.app)
+---
 
 ## **🛠️ Tech Stack**
 - **TypeScript**: Static typing for better development experience.
