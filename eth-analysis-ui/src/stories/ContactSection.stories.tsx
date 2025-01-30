@@ -15,6 +15,8 @@ export default meta;
 // Template to render ContactSection
 const Template: StoryFn<typeof ContactSection> = () => <ContactSection />;
 
+// type Story = StoryObject<typeof meta>
+
 // Default story for ContactSection
 export const Default = Template.bind({});
 
