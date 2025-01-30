@@ -31,6 +31,10 @@ jobs:
     - name: Build Storybook 
       run: yarn build-storybook --output-dir=storybook-static 
       working-directory: eth-analysis-ui
-      
+
     - name: Deploy Storybook to Vercel
-      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }} --prod -cwd --cwd eth-analysis-ui
+      run: |
+        yarn global add vercel  # Install vercel globally
+        vercel --prod --token=${{ secrets.VERCEL_TOKEN }} 
+      env: 
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }} 
