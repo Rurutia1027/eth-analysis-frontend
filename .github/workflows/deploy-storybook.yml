@@ -3,10 +3,13 @@ name: Deploy Storybook to Vercel
 on: 
   push: 
    branches:
-    - '*' 
+    - master 
    paths:
     - "eth-analysis-ui/src/stories/**/*.stories.@(ts|tsx)"
     - "eth-analysis-ui/src/stories/*.stories.@(ts|tsx)"
+  pull_request:
+    branches:
+      - "*"
     
 jobs: 
   deploy-storybook: 
