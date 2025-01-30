@@ -64,10 +64,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
-      - name: Build Storybook
-        run: yarn build-storybook --output-dir=storybook-static
-        working-directory: eth-analysis-ui
-
       - name: Deploy Storybook to Vercel
         run: |
           npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
