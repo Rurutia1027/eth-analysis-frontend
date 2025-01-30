@@ -1,6 +1,8 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import ContactSection from "../sections/ContactSection";
 import type { ContactProps } from '../sections/ContactSection'; 
+import exampleSvg from "./assets/accessibility.svg"
+import { StaticImageData } from "next/image";
 
 // Default export for Storybook
 const meta: Meta<typeof ContactSection> = {
@@ -19,7 +21,7 @@ export const Default = Template.bind({});
 // Custom Story for individual Contact props (optional)
 const contactExample: ContactProps = {
   alt: "example icon",
-  imageSrc: "/path/to/image.svg", // Update the path for the static image data
+  imageSrc: exampleSvg as StaticImageData,
   href: "https://example.com",
   children: "Example Contact",
 };
