@@ -12,7 +12,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, text }) => {
   return (
     <BodyText className={styles["wrapper"]}>
       <div
-        className={`${styles.title} break-words py-6 text-lg ${
+        className={`${styles.title} break-words py-6  text-lg text-black ${
           isOpen ? `${styles.open}` : ""
         }`}
         onClick={() => setOpen(!isOpen)}
