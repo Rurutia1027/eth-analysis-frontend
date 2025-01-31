@@ -13,7 +13,8 @@
     "start:prod": "node standalone-prod/server.js",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test-storybook": "storybook test"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.14",
@@ -61,12 +62,14 @@
     "@next/bundle-analyzer": "^13.0.1",
     "@storybook/addon-essentials": "^7.6.10",
     "@storybook/addon-interactions": "^7.6.10",
+    "@storybook/addon-jest": "^8.5.2",
     "@storybook/addon-links": "^7.6.10",
     "@storybook/addon-onboarding": "^1.0.11",
     "@storybook/blocks": "^7.6.10",
     "@storybook/nextjs": "^7.6.10",
     "@storybook/react": "^7.6.10",
     "@storybook/test": "^7.6.10",
+    "@storybook/test-runner": "^0.21.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/aos": "^3.0.4",
     "@types/d3-shape": "^3.1.0",
