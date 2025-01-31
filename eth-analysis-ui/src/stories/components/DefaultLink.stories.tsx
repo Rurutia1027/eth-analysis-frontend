@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Meta, Story, StoryObj } from '@storybook/react'; 
+import { Meta, StoryObj } from '@storybook/react'; 
 import DefaultLink from "../../components/DefaultLink";
 import { cons } from "fp-ts/lib/ReadonlyNonEmptyArray";
 
