@@ -4,7 +4,7 @@ import Script from "next/script";
 import SiteMetadata from "../site-metadata";
 import { SWRConfig } from "swr";
 
-type StaticProps = {
+export type StaticProps = {
     fallback: Record<string, unknown>;
 };
 

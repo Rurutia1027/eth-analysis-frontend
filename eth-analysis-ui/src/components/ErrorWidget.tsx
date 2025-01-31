@@ -3,7 +3,7 @@ import { divide } from "lodash";
 
 type Props = { title: string };
 
-const ErrorWidget: FC<Props> = ({ title }) => (
+export const ErrorWidget: FC<Props> = ({ title }) => (
   <div className="w-full rounded-lg border border-red-400 bg-slateus-700 p-8 font-roboto text-base font-light text-white">
     <p className="mb-8 font-inter text-xs font-light uppercase tracking-widest text-slateus-200">
       {title}
