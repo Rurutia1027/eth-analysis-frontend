@@ -15,11 +15,27 @@ describe("useAdminToken", () => {
         expect(result.current).toBe("secret123")
     }); 
 
-    it("", () => {
-
+    it("should return undefined if admin-token is missing in searching url", () => {
+        Object.defineProperty(window, "location", {
+            value: {
+                search: "", 
+            },
+            writable:true, 
+        }); 
+        const { result } = renderHook(() => useAdminToken()); 
+        expect(result.current).toBeUndefined(); 
     }); 
 
-    it("", () => {
+    it("should return undefined if admin-token is empty", () => {
+        Object.defineProperty(window, "location", {
+            value: {
+                search: "?admin-token="
+            },
+            writable: true,
+        }); 
 
+        const { result } = renderHook(() => useAdminToken()); 
+
+        expect(result.current).toBeUndefined(); 
     }); 
 }); 
