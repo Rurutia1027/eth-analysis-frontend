@@ -13,8 +13,7 @@
     "start:prod": "node standalone-prod/server.js",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "test-storybook": "storybook test"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.14",
@@ -68,7 +67,6 @@
     "@storybook/nextjs": "^7.6.10",
     "@storybook/react": "^7.6.10",
     "@storybook/test": "^7.6.10",
-    "@storybook/test-runner": "^0.21.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/aos": "^3.0.4",
     "@types/d3-shape": "^3.1.0",
