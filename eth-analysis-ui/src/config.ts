@@ -1,8 +1,7 @@
 type Env = "dev" | "prod" | "stag";
 
 export const envFromEnv = (): Env => {
-  const rawEnv = "dev": Env
-  //process.env.NEXT_PUBLIC_ENV;
+  const rawEnv = process.env.NEXT_PUBLIC_ENV;
 
   switch (rawEnv) {
     case "prod":
