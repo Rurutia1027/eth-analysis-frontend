@@ -1,16 +1,13 @@
-// pages/index.tsx
+// src/stories/RelayDashboard.stories.tsx
 
 import React from "react";
-import Script from "next/script";
-import { SWRConfig } from "swr";
-import RelayDashboard from "../relay/RelayDashboards";
-import {
-  Builder,
-  Payload,
-  PayloadStats,
-  Validator,
-  ValidatorStats,
-} from "../relay/types";
+import { Meta, StoryObj } from "@storybook/react";
+import RelayDashboard, {
+  RelayDashboardProps,
+} from "../../relay/RelayDashboards";
+import { Payload, PayloadStats } from "../../relay/types";
+
+// Mock Data for the props
 
 const mockPayloadStats: PayloadStats = {
   count: 1000,
@@ -18,7 +15,7 @@ const mockPayloadStats: PayloadStats = {
   firstPayloadAt: new Date(),
 };
 
-const mockTopBuilders: Array<Builder> = [
+const mockTopBuilders = [
   { builderName: "Builder 1", blockCount: 200 },
   { builderName: "Builder 2", blockCount: 150 },
   { builderName: "Builder 3", blockCount: 100 },
@@ -37,12 +34,12 @@ const mockTopPayloads: Array<Payload> = [
   },
 ];
 
-const mockValidatorStats: ValidatorStats = {
+const mockValidatorStats = {
   validatorCount: 5,
   knownValidatorCount: 4,
 };
 
-const mockValidators: Array<Validator> = [
+const mockValidators = [
   { insertedAt: new Date(), index: "validator-1" },
   { insertedAt: new Date(), index: "validator-2" },
   { insertedAt: new Date(), index: "validator-3" },
@@ -50,20 +47,20 @@ const mockValidators: Array<Validator> = [
   { insertedAt: new Date(), index: "validator-5" },
 ];
 
-const Home: React.FC = () => {
-  return (
-    <div>
-      <h1>Welcome to eth-analysis-ui</h1>
-      <RelayDashboard
-        payloadStats={mockPayloadStats}
-        payloads={mockTopPayloads}
-        topBuilders={mockTopBuilders}
-        topPayloads={mockTopPayloads}
-        validatorStats={mockValidatorStats}
-        validators={mockValidators}
-      />
-    </div>
-  );
+export default {
+  title: "Components/RelayDashboard",
+  component: RelayDashboard,
+} as Meta;
+
+const Template: StoryObj<RelayDashboardProps> = {
+  args: {
+    payloadStats: mockPayloadStats,
+    payloads: mockTopPayloads,
+    topBuilders: mockTopBuilders,
+    topPayloads: mockTopPayloads,
+    validatorStats: mockValidatorStats,
+    validators: mockValidators,
+  },
 };
 
-export default Home;
+export const Default = Template;
