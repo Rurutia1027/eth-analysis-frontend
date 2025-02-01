@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react";
-// we need to import this global css to enable storybook show the css style in the storybook webpage 
-import '../src/styles/global.css'; 
+// we need to import this global css to enable storybook show the css style in the storybook webpage
+import "../src/styles/global.css";
 
 const preview: Preview = {
   parameters: {
