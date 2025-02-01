@@ -27,7 +27,6 @@ yarn-error.log*
 yarn.lock
 package-lock.json
 tsconfig.tsbuildinfo
-.env 
 /.idea/
 storybook-static/
 .vscode/

@@ -60,7 +60,17 @@ const RelayDashboard: FC<RelayDashboardProps> = ({
           </BasicErrorBoundary>
           <div className="h-[48.5px] md:h-[68px]" />
           <MainTitle>ultra sound relay</MainTitle>
-          {env === "stag" ? <div className={``}>holesky testnet</div> : null}
+          {env === "stag" ? (
+            <div
+              className={`
+              mt-4 text-center font-inter text-xl
+              font-extralight tracking-wide
+              text-slateus-400 sm:mt-0
+            `}
+            >
+              holesky testnet
+            </div>
+          ) : null}
           <div className="mb-32 mt-16 flex flex-col gap-y-4 xs:px-4 md:px-16">
             <div className="mt-16 flex flex-col gap-x-4 gap-y-4 lg:flex-row">
               <AddressWidget />
