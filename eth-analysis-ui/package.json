@@ -52,6 +52,7 @@
     "react-zoom-pan-pinch": "^3.0.5",
     "sharp": "^0.33.5",
     "twemoji": "^14.0.2",
+    "uuid": "8.3.2",
     "web-vitals": "^4.2.4"
   },
   "devDependencies": {
@@ -59,6 +60,7 @@
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
     "@next/bundle-analyzer": "^13.0.1",
+    "@storybook/addon-actions": "^8.5.2",
     "@storybook/addon-essentials": "^7.6.10",
     "@storybook/addon-interactions": "^7.6.10",
     "@storybook/addon-links": "^7.6.10",
@@ -67,6 +69,7 @@
     "@storybook/nextjs": "^7.6.10",
     "@storybook/react": "^7.6.10",
     "@storybook/test": "^7.6.10",
+    "@storybook/testing-library": "^0.2.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/aos": "^3.0.4",
     "@types/d3-shape": "^3.1.0",

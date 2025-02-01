@@ -8,7 +8,7 @@ type Props = {
   onToggle: (enabled: boolean) => void;
 };
 
-export const ToggleSwitch: FC<Props> = ({
+const ToggleSwitch: FC<Props> = ({
   checked,
   className,
   disabled = false,
@@ -22,3 +22,5 @@ export const ToggleSwitch: FC<Props> = ({
     type="checkbox"
   />
 );
+
+export default ToggleSwitch;
