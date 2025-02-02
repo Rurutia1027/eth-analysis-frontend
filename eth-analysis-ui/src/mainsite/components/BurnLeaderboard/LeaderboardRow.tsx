@@ -6,7 +6,7 @@ import {
   categoryDisplayMap,
   getIsKnownCategory,
 } from "../../api/burn-categories";
-import type * as Contracts from "../../api/contracts.ts";
+import type * as Contracts from "../../api/contracts";
 import type { LeaderboardEntry } from "../../api/leaderboards";
 import type { Unit } from "../../../denomination";
 import { FeatureFlagsContext } from "../../../feature-flags";
