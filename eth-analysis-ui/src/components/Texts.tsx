@@ -56,3 +56,9 @@ export const BaseText: FC<BaseTextProps> = ({
     },
     children,
   );
+
+export const TooltipTitle: FC<{ children: ReactNode }> = ({ children }) => (
+  <BaseText font="font-inter" size="text-base md:text-lg" weight="font-normal">
+    {children}
+  </BaseText>
+);
