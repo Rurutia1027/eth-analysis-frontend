@@ -2,6 +2,20 @@ import type { CSSProperties, FC, ReactNode } from "react";
 import { createElement } from "react";
 import BodyText from "./TextNext/BodyText";
 
+export const UnitText: FC<{ children: string; className?: string }> = ({
+  className = "",
+  children,
+}) => (
+  <BaseText
+    className={className}
+    color="text-slateus-200"
+    font="font-roboto"
+    weight="font-extralight"
+  >
+    {children}
+  </BaseText>
+);
+
 export type FontWeight =
   | "font-normal"
   | "font-light"
