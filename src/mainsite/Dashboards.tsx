@@ -16,3 +16,39 @@ import ContactSection from "../sections/ContactSection";
 import type { TimeFrame } from "./time-frames";
 import { getNextTimeFrame } from "./time-frames";
 import FaqBlock from "./components/Faq";
+import BurnDashboard from "./sections/BurnDashboard";
+import GasSection from "./sections/GasSection";
+import BlobGasSection from "./sections/BlobGasSection";
+import SupplyProjectionSection from "./sections/SupplyProjectionSection";
+import FlippeningSection from "./sections/FlippeningSection";
+import TotalValueSecuredSection from "./sections/TotalValueSecuredSection";
+import MonetaryPremiumSection from "./sections/MonetaryPremiumSection";
+import FamSection from "./sections/FamSection";
+
+const Dashboard: FC = () => {
+  const { featureFlags, setFlag } = useFeatureFlags();
+  return (
+    <FeatureFlagsContext.Provider value={featureFlags}>
+      <SkeletonTheme
+        baseColor={colors.slateus500}
+        highlightColor="#565b7f"
+        enableAnimation={true}
+      >
+        <MainTitle>ultra sound money</MainTitle>
+        <GasSection />
+        <BlobGasSection />
+        <SupplyProjectionSection />
+        <BurnDashboard />
+        <FlippeningSection />
+        <TotalValueSecuredSection />
+        <MonetaryPremiumSection />
+        <FamSection />
+        <div className="mt-32 flex px-4 md:px-0">
+          <ContactSection />
+        </div>
+      </SkeletonTheme>
+    </FeatureFlagsContext.Provider>
+  );
+};
+
+export default Dashboard;
