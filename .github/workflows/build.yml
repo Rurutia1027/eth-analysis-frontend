@@ -28,18 +28,18 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd eth-analysis-ui && yarn install
+          yarn install
 
       - name: Build the project
         run: |
-          cd eth-analysis-ui && yarn build  
+          yarn build  
 
       - name: Run tests
         run: |
-          cd eth-analysis-ui && yarn test --ci --runInBand
+          yarn test --ci --runInBand
           
       - name: Upload build artifacts (optional)
         uses: actions/upload-artifact@v4
         with:
           name: react-build
-          path: ./eth-analysis-ui/build
+          path: .
