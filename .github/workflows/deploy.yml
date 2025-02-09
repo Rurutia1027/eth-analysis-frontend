@@ -19,16 +19,13 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        run: |
-          cd eth-analysis-ui  
+        run: |        
           yarn install
 
       - name: Build the project
-        run: |
-          cd eth-analysis-ui  
+        run: |         
           yarn build
 
       - name: Deploy to production
         run: |
-          cd eth-analysis-ui
           firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}

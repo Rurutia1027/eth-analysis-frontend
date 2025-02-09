@@ -5,9 +5,9 @@ on:
     branches:
       - master
     paths:
-      - "eth-analysis-ui/src/stories/**/*.stories.@(ts|tsx)"
-      - "eth-analysis-ui/src/stories/*.stories.@(ts|tsx)"
-      - "eth-analysis-ui/.storybook/*"
+      - "src/stories/**/*.stories.@(ts|tsx)"
+      - "src/stories/*.stories.@(ts|tsx)"
+      - ".storybook/*"
   pull_request:
     branches:
       - "*"
@@ -30,19 +30,19 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn add vercel
-        working-directory: eth-analysis-ui
+        working-directory: .
 
       - name: Check vercel installation
         run: |
           npx vercel --version  # Ensure the local vercel version is accessible
-        working-directory: eth-analysis-ui
+        working-directory: .
 
       - name: Cache node_modules
         id: cache
         uses: actions/cache@v3
         with:
-          path: eth-analysis-ui/node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('eth-analysis-ui/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
 
   deploy-storybook:
     needs: install-dependencies
@@ -59,12 +59,12 @@ jobs:
       - name: Restore node_modules
         uses: actions/cache@v3
         with:
-          path: eth-analysis-ui/node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('eth-analysis-ui/package-lock.json') }}
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
       - name: Deploy Storybook to Vercel
         run: |
           npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
-        working-directory: eth-analysis-ui
+        working-directory: .
