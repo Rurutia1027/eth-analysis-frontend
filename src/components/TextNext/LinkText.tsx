@@ -7,12 +7,17 @@ type Props = {
 };
 
 const LinkText: FC<Props> = ({ children, className }) => (
- <BaseText className={`  cursor-pointer
+  <BaseText
+    className={`  cursor-pointer
       hover:underline
       hover:brightness-90
       active:brightness-75
-      ${className}`} font='font-inter' color="text-slateus-300">
- </BaseText>
-); 
+      ${className}`}
+    font="font-inter"
+    color="text-slateus-300"
+  >
+    {children}
+  </BaseText>
+);
 
-export LinkText; 
+export default LinkText;
