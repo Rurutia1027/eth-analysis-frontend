@@ -20,7 +20,9 @@ import useSWR from "swr";
 
 // import components
 import { BaseText, TooltipTitle } from "../../../components/Texts";
-// import LinkText
+import LabelText from "../../../components/TextNext/LabelText";
+import Twemoji from "../../../components/Twemoji";
+import LinkText from "../../../components/TextNext/LinkText";
 
 // import svg resources
 import closeSvg from "../../../assets/close.svg";
@@ -35,8 +37,6 @@ import seeNoEvilSvg from "./see-no-evil-own.svg";
 import speakNoEvilSvg from "./speak-no-evil-own.svg";
 import ultraSoundPoapStill from "./ultrasoundpoapstill.png";
 import ultraSoundPoapGif from "./utlra_sound_poap.gif";
-import LabelText from "../../../components/TextNext/LabelText";
-import Twemoji from "../../../components/Twemoji";
 
 type ClaimPoapTooltipProps = {
   className?: string;
@@ -113,7 +113,7 @@ const ClaimPoapTooltip: FC<ClaimPoapTooltipProps> = ({
             rel="noreferrer"
             target="_blank"
           >
-            Text Content
+            <LinkText>5,000+ supporters</LinkText>
           </a>
         </TooltipText>
       </Twemoji>
@@ -124,7 +124,8 @@ const ClaimPoapTooltip: FC<ClaimPoapTooltipProps> = ({
 const PoapSection: FC = () => {
   return (
     <>
-      <div>PoapSection</div>
+      <h1>PoapSection</h1>
+      <ClaimPoapTooltip />
     </>
   );
 };

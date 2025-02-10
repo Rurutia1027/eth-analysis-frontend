@@ -1,5 +1,8 @@
 import { StoryObj } from "@storybook/react";
-import { PoapSection } from "../../../../dashboards/sections/PoapSection";
+import {
+  ClaimPoapTooltip,
+  PoapSection,
+} from "../../../../dashboards/sections/PoapSection";
 const meta = {
   title: "Sections/PoapSection",
   component: PoapSection,
