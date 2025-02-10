@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomBlobGasSection from "../../dashboards/sections/BlobGasSection";
+import CustomJoinDiscoradSection from "../../../dashboards/sections/JoinDiscoradSection";
 
 const meta = {
-  title: "Sections/BlobGasSection",
-  component: CustomBlobGasSection,
+  title: "Sections/JoinDiscoradSection",
+  component: CustomJoinDiscoradSection,
   parameters: {
     layout: "fullscreen",
   },

@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomPoapSection from "../../dashboards/sections/PoapSection";
+import CustomFamSection from "../../../dashboards/sections/FamSection";
 
 const meta = {
-  title: "Sections/PoapSection",
-  component: CustomPoapSection,
+  title: "Sections/FamSection",
+  component: CustomFamSection,
   parameters: {
     layout: "fullscreen",
   },

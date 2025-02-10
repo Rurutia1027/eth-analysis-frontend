@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomSupplyProjectionSection from "../../dashboards/sections/SupplyProjectionSection";
+import CustomFlippeningSection from "../../../dashboards/sections/FlippeningSection";
 
 const meta = {
-  title: "Sections/SupplyProjectionSection",
-  component: CustomSupplyProjectionSection,
+  title: "Sections/FlippeningSection",
+  component: CustomFlippeningSection,
   parameters: {
     layout: "fullscreen",
   },

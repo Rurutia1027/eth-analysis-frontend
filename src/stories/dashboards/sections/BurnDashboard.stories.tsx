@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomFamSection from "../../dashboards/sections/FamSection";
+import CustomBurnDashboard from "../../../dashboards/sections/BurnDashboard";
 
 const meta = {
-  title: "Sections/FamSection",
-  component: CustomFamSection,
+  title: "Sections/BurnDashboard",
+  component: CustomBurnDashboard,
   parameters: {
     layout: "fullscreen",
   },

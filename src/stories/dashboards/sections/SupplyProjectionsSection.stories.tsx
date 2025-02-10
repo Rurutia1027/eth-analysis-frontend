@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomGasSection from "../../dashboards/sections/GasSection";
+import CustomSupplyProjectionSection from "../../../dashboards/sections/SupplyProjectionSection";
 
 const meta = {
-  title: "Sections/GasSection",
-  component: CustomGasSection,
+  title: "Sections/SupplyProjectionSection",
+  component: CustomSupplyProjectionSection,
   parameters: {
     layout: "fullscreen",
   },
