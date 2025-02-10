@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomPoapSection from "../../mainsite/sections/PoapSection";
+import CustomPoapSection from "../../dashboards/sections/PoapSection";
 
 const meta = {
   title: "Sections/PoapSection",

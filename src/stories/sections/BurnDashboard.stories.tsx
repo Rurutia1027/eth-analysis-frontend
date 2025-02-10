@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomBurnDashboard from "../../mainsite/sections/BurnDashboard";
+import CustomBurnDashboard from "../../dashboards/sections/BurnDashboard";
 
 const meta = {
   title: "Sections/BurnDashboard",

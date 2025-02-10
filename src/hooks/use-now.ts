@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { O } from "../../fp";
+import { O } from "../fp";
 
 export const useNow = () => {
   const [now, setNow] = useState<O.Option<Date>>(O.none);

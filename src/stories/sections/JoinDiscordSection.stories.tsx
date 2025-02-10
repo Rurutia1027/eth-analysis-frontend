@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomJoinDiscoradSection from "../../mainsite/sections/JoinDiscoradSection";
+import CustomJoinDiscoradSection from "../../dashboards/sections/JoinDiscoradSection";
 
 const meta = {
   title: "Sections/JoinDiscoradSection",

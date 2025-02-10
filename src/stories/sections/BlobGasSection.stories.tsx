@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomBlobGasSection from "../../mainsite/sections/BlobGasSection";
+import CustomBlobGasSection from "../../dashboards/sections/BlobGasSection";
 
 const meta = {
   title: "Sections/BlobGasSection",

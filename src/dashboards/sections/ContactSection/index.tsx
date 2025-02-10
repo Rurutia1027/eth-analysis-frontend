@@ -1,9 +1,9 @@
 import type { FC, ReactNode } from "react";
 import DefaultTextLink from "../../../components/DefaultTextLink";
 import SectionDivider from "../../../components/SectionDivider";
-import emailSvg from "./email-slateus.svg";
-import twitterSvg from "../../assets/twitter-slateus.svg";
-import githubSvg from "./github-slateus.svg";
+import twitterSvg from "../../../assets/twitter-slateus.svg";
+import githubSvg from "../../../assets/github-slateus.svg";
+import emailSvg from "../../../assets/email-slateus.svg";
 import type { StaticImageData } from "next/image";
 import Image from "next/legacy/image";
 

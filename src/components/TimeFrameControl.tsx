@@ -5,11 +5,9 @@ import fireOwnSvg from "../assets/fire-own.svg";
 import fireSlateusSvg from "../assets/fire-slateus.svg";
 import pandaOwnSvg from "../assets/panda-own.svg";
 import pandaSlateusSvg from "../assets/panda-slateus.svg";
-import type { TimeFrame } from "../mainsite/time-frames";
-import {
-  displayLimitedTimeFrameMap,
-  timeFrames,
-} from "../mainsite/time-frames";
+import type { TimeFrame } from "../time-frames";
+import { displayLimitedTimeFrameMap, timeFrames } from "../time-frames";
+
 import HoverTooltip from "../mainsite/components/HoverTooltip";
 
 export type OnSetTimeFrame = (timeFrame: TimeFrame) => void;

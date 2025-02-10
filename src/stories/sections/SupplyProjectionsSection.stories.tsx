@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomSupplyProjectionSection from "../../mainsite/sections/SupplyProjectionSection";
+import CustomSupplyProjectionSection from "../../dashboards/sections/SupplyProjectionSection";
 
 const meta = {
   title: "Sections/SupplyProjectionSection",

@@ -6,8 +6,8 @@ import { LondonHardForkTooltip } from "../../components/TimeFrameControl";
 import { londonHardFork, mergeDateTime } from "../../dates";
 import { millisFromHours } from "../../duration";
 import { formatZeroDecimals } from "../../format";
-import type { TimeFrame } from "../time-frames";
-import { displayLimitedTimeFrameMap } from "../time-frames";
+import type { TimeFrame } from "../../time-frames";
+import { displayLimitedTimeFrameMap } from "../../time-frames";
 import type { OnClick } from "../../components/TimeFrameControl";
 
 export const getFormattedDays = (

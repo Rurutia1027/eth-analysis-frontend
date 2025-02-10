@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomTotalValueSecuredSection from "../../mainsite/sections/TotalValueSecuredSection";
+import CustomTotalValueSecuredSection from "../../dashboards/sections/TotalValueSecuredSection";
 
 const meta = {
   title: "Sections/TotalValueSecuredSection",

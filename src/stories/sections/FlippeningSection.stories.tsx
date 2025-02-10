@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomFlippeningSection from "../../mainsite/sections/FlippeningSection";
+import CustomFlippeningSection from "../../dashboards/sections/FlippeningSection";
 
 const meta = {
   title: "Sections/FlippeningSection",

@@ -1,6 +1,6 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomFamSection from "../../mainsite/sections/FamSection";
+import CustomFamSection from "../../dashboards/sections/FamSection";
 
 const meta = {
   title: "Sections/FamSection",
