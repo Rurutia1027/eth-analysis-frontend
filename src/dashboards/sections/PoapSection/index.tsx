@@ -27,6 +27,7 @@ import { WidgetBackground } from "../../../components/WidgetSubcomponents";
 
 // import hooks
 import { TwitterAuthStatus } from "../../../hooks/use-twitter-auth";
+import { AuthFromSection } from "../../../hooks/use-auth-from-section";
 
 // import constant
 import { DateTimeString } from "../../../constants/time";
