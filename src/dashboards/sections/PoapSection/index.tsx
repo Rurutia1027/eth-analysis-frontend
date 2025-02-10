@@ -23,6 +23,17 @@ import { BaseText, TooltipTitle } from "../../../components/Texts";
 import LabelText from "../../../components/TextNext/LabelText";
 import Twemoji from "../../../components/Twemoji";
 import LinkText from "../../../components/TextNext/LinkText";
+import { WidgetBackground } from "../../../components/WidgetSubcomponents";
+
+// import hooks
+import { TwitterAuthStatus } from "../../../hooks/use-twitter-auth";
+
+// import constant
+import { DateTimeString } from "../../../constants/time";
+import * as SharedConfig from "../../../constants/config";
+
+// import api
+import { Linkables } from "../../../api/profiles";
 
 // import svg resources
 import closeSvg from "../../../assets/close.svg";
@@ -37,6 +48,7 @@ import seeNoEvilSvg from "./see-no-evil-own.svg";
 import speakNoEvilSvg from "./speak-no-evil-own.svg";
 import ultraSoundPoapStill from "./ultrasoundpoapstill.png";
 import ultraSoundPoapGif from "./utlra_sound_poap.gif";
+import { fetchJsonSwr } from "../../../api/fetchers";
 
 type ClaimPoapTooltipProps = {
   className?: string;
@@ -107,21 +119,89 @@ const ClaimPoapTooltip: FC<ClaimPoapTooltipProps> = ({
       <LabelText>Fam</LabelText>
       <Twemoji>
         <TooltipText>
-          The fam are{""}
+          The fam are{" "}
           <a
             href="https://ultrasound.money/#fam"
             rel="noreferrer"
             target="_blank"
           >
             <LinkText>5,000+ supporters</LinkText>
-          </a>
+          </a>{" "}
         </TooltipText>
       </Twemoji>
+      <LabelText>benefits</LabelText>
+      <TooltipText>
+        Beyond pride and glory, POAP holders get priority access to the{" "}
+        <a
+          href="https://ultrasound.money/#discord"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <LinkText>ultra sound Discord.</LinkText>
+        </a>
+      </TooltipText>
     </div>
   </div>
 );
 
+type ClaimPoapProps = {
+  className?: string;
+  refreshClaimStatus: () => void;
+  setTwitterAuthStatus: Dispatch<SetStateAction<TwitterAuthStatus>>;
+  twitterAuthStatus: TwitterAuthStatus;
+};
+
+type ClaimStatus = "sending" | "invalid-address" | "error" | "sent" | "init";
+
+const ClaimPoap: FC<ClaimPoapProps> = ({
+  className,
+  refreshClaimStatus,
+  twitterAuthStatus,
+  setTwitterAuthStatus,
+}) => {
+  // const [, setAuthFromSection] = useAuthFromSection();
+  const [walletId, setWalletId] = useState<string>("");
+  const [claimStatus, setClaimStatus] = useState<ClaimStatus>("init");
+
+  return (
+    <WidgetBackground
+      className={`
+          flex max-w-3xl flex-col justify-between
+          ${className}
+        `}
+    >
+      <div className="relative flex items-start justify-between"></div>
+    </WidgetBackground>
+  );
+};
+
+type RecentCliamAccount = {
+  bio: string;
+  claimed_on: DateTimeString;
+  fam_follower_count: number;
+  follower_count: number;
+  handle: string;
+  linkables: Linkables | null;
+  name: string;
+  profile_image_url: string | null;
+  twitter_id: string;
+};
+
+type PoapsClaimed = {
+  count: number;
+  index: number;
+  latest_claimers: RecentCliamAccount[];
+};
+
 const PoapSection: FC = () => {
+  const { data: poapsClaimed, mutate } = useSWR<PoapsClaimed, Error>(
+    `${SharedConfig.usmDomainFromEnv()}/api/v2/fam/poap/claimed`,
+    fetchJsonSwr,
+  );
+  const { ref, inView } = useInView({ threshold: 1 });
+  const [animatePoap, setAnimatePoap] = useState(true);
+  const animationTimeoutId = useRef<number>();
+
   return (
     <>
       <h1>PoapSection</h1>
@@ -130,4 +210,4 @@ const PoapSection: FC = () => {
   );
 };
 
-export { PoapSection, ClaimPoapTooltip, TooltipText };
+export { PoapSection, ClaimPoapTooltip, TooltipText, ClaimPoap };
