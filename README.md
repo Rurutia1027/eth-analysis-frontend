@@ -37,52 +37,44 @@ The **eth-analysis-frontend** is a modern Ethereum data analysis platform develo
 #### **1️⃣ Clone the Repository**
 
 ```bash
-git clone https://github.com/Rurutia1027/react-ts-projects.git
+git clone https://github.com/Rurutia1027/eth-analysis-frontend.git
 ```
 
 #### **2️⃣ Install Dependencies**
 
 ```bash
-yarn install
+npm install && yarn build
 ```
 
 #### **3️⃣ Start Development Server**
 
 ```bash
-yarn dev
-```
+yarn run dev
 
-#### **4️⃣ Build for Production**
-
-```bash
-yarn build
 # then open http://localhost:3000
 ```
 
-### Deploy Eth-Analysis-Frontend Project's StoryBook Web Page
+### Deploy Project's StoryBook
 
 #### **1️⃣ Clone the Repository**
 
 ```bash
-git clone https://github.com/Rurutia1027/react-ts-projects.git
+git clone https://github.com/Rurutia1027/eth-analysis-frontend.git
 ```
 
 #### **2️⃣ Install Dependencies**
 
 ```bash
-yarn install
+npm install && yarn build && yarn run dev
+
+# then open http://localhost:3000
 ```
 
-#### **3️⃣ Build StoryBook**
+#### **3️⃣ Build StoryBook && Set up StoryBook Web Page**
 
 ```bash
-yarn build-storybook # this command has already been configured in the package.json
-```
+yarn storybook build # this command has already been configured in the package.json
 
-#### **4️⃣ Set up StoryBook Web Page**
-
-```bash
-yarn storybook  # this command has already been declared in the package.json
 # then open http://localhost:6006
 ```
 
@@ -92,28 +84,51 @@ yarn storybook  # this command has already been declared in the package.json
 
 ```
 eth-analysis-frontend/
-├── next-env.d.ts          # TypeScript environment definitions for Next.js
-├── next.config.js         # Next.js configuration file
-├── node_modules/          # Dependencies installed by Yarn
-├── package.json           # Project metadata and scripts
-├── postcss.config.js      # PostCSS configuration
-├── prettier.config.js     # Prettier configuration for code formatting
-├── public/                # Public assets like images and static files
-├── src/                   # Source code for the project
-│   ├── assets/            # Project-specific assets
-│   ├── components/        # Reusable React components
-│   ├── contexts/          # React context implementations
-│   ├── hooks/             # Custom React hooks
-│   ├── mainsite/          # Core site-related components
-│   ├── pages/             # Next.js pages
-│   ├── relay/             # GraphQL relay implementation
-│   ├── sections/          # Specific UI sections or features
-│   ├── styles/            # SCSS and Tailwind CSS files
-│   └── setupTests.ts      # Test setup file
-├── tailwind.config.js     # Tailwind CSS configuration file
-├── tsconfig.json          # TypeScript configuration
-├── tsconfig.tsbuildinfo   # Incremental TypeScript build information
-└── yarn.lock              # Yarn lock file for dependencies
+├── .github/workflows/         # GitHub Actions workflows for CI/CD
+│   ├── build.yml              # Build pipeline configuration
+│   ├── deploy-storybook.yml   # Storybook deployment pipeline
+│   └── deploy.yml             # General deployment pipeline
+├── .next/                     # Next.js build output directory
+├── .storybook/                # Storybook configuration files
+├── .vscode/                   # VSCode-specific workspace settings
+├── coverage/                  # Test coverage reports
+├── locales/                   # Localization files for internationalization
+├── node_modules/              # Installed project dependencies
+├── notes/                     # Project notes and documentation
+├── public/                    # Static public assets like images and fonts
+├── src/                       # Source code for the project
+│   ├── __tests__/             # Unit and integration test files
+│   ├── api/                   # API request logic and configurations
+│   ├── assets/                # Static assets used within the project
+│   ├── components/            # Reusable React components
+│   ├── constants/             # Constant values and configuration data
+│   ├── contexts/              # React context implementations
+│   ├── dashboards/            # Dashboard-related components and logic
+│   │   ├── Dashboards.tsx     # Main dashboard component
+│   │   └── sections/         # Specific dashboard sections
+│   ├── hooks/                 # Custom React hooks
+│   ├── pages/                 # Next.js pages for routing
+│   ├── stories/               # Storybook stories for UI component documentation
+│   │   ├── assets/            # Assets specific to Storybook stories
+│   │   ├── components/        # Stories for individual UI components
+│   │   ├── dashboards/        # Stories related to dashboard components
+│   │   └── pages/             # Stories for full-page layouts
+│   ├── styles/                # Global and component-specific styles (Tailwind, CSS)
+│   └── utils/                 # Utility functions and helper scripts
+├── .env                       # Environment variables for local development
+├── .eslintrc.js               # ESLint configuration for code linting
+├── .gitignore                 # Specifies files to be ignored by Git
+├── jest.config.js             # Jest configuration for testing
+├── LICENSE                    # Project license information
+├── next-env.d.ts              # TypeScript environment definitions for Next.js
+├── next.config.js             # Next.js configuration file
+├── package.json               # Project metadata, dependencies, and scripts
+├── postcss.config.js          # PostCSS configuration
+├── prettier.config.js         # Prettier configuration for code formatting
+├── tailwind.config.js         # Tailwind CSS configuration
+├── tsconfig.json              # TypeScript compiler configuration
+├── tsconfig.tsbuildinfo       # TypeScript incremental build information
+└── yarn.lock                  # Yarn lockfile for consistent dependency management
 ```
 
 ---
