@@ -27,9 +27,13 @@ import TotalValueSecuredSection from "./sections/TotalValueSecuredSection";
 import MonetaryPremiumSection from "./sections/MonetaryPremiumSection";
 import FamSection from "./sections/FamSection";
 import { PoapSection } from "./sections/PoapSection";
+import { useTwitterAuthStatus } from "../hooks/use-twitter-auth";
 
 const Dashboard: FC = () => {
   const { featureFlags, setFlag } = useFeatureFlags();
+
+  const [twitterAuthStatus, setTwitterAuthStatus] = useTwitterAuthStatus();
+
   return (
     <FeatureFlagsContext.Provider value={featureFlags}>
       <SkeletonTheme
@@ -46,7 +50,10 @@ const Dashboard: FC = () => {
         <TotalValueSecuredSection />
         <MonetaryPremiumSection />
         <FamSection />
-        <PoapSection />
+        <PoapSection
+          setTwitterAuthStatus={setTwitterAuthStatus}
+          twitterAuthStatus={twitterAuthStatus}
+        />
         <div className="mt-32 flex px-4 md:px-0">
           <ContactSection />
         </div>
