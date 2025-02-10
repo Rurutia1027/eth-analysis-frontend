@@ -1,5 +1,5 @@
 {
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "files.autoSave": "off",
   "editor.tabSize": 1,
   "editor.wordWrap": "on",
@@ -15,9 +15,9 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "editor.cursorBlinking": "expand",
-  "window.zoomLevel": 2
+  "window.zoomLevel": 2,
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  }
 }

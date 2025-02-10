@@ -1,5 +1,5 @@
 import { FC } from "react";
-import PoapSection from "./PoapSection";
+import { PoapSection } from "./PoapSection";
 
 const FamSection: FC = () => {
   return (

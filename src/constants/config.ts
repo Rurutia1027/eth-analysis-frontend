@@ -49,7 +49,7 @@ export const usmDomainFromEnv = (): string => {
       return "http://localhost:3000";
     // todo: modify to this as vercel production url address
     case "prod":
-      return "http://localhost:3000";
+      return "https://ultrasound.money/";
   }
 };
 
