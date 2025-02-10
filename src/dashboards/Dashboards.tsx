@@ -26,6 +26,7 @@ import FlippeningSection from "./sections/FlippeningSection";
 import TotalValueSecuredSection from "./sections/TotalValueSecuredSection";
 import MonetaryPremiumSection from "./sections/MonetaryPremiumSection";
 import FamSection from "./sections/FamSection";
+import { PoapSection } from "./sections/PoapSection";
 
 const Dashboard: FC = () => {
   const { featureFlags, setFlag } = useFeatureFlags();
@@ -45,6 +46,7 @@ const Dashboard: FC = () => {
         <TotalValueSecuredSection />
         <MonetaryPremiumSection />
         <FamSection />
+        <PoapSection />
         <div className="mt-32 flex px-4 md:px-0">
           <ContactSection />
         </div>

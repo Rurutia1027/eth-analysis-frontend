@@ -202,6 +202,18 @@ const PoapSection: FC = () => {
   const [animatePoap, setAnimatePoap] = useState(true);
   const animationTimeoutId = useRef<number>();
 
+  useEffect(() => {
+    if (inView) {
+      const timeoutId = window.setTimeout(() => {
+        setAnimatePoap(false);
+      }, 3000);
+
+      return () => window.clearTimeout(timeoutId);
+    }
+  }, [inView]);
+
+  const id: AuthFromSection = "poap";
+
   return (
     <>
       <h1>PoapSection</h1>
