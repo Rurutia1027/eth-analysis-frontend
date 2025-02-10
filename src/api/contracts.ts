@@ -1,7 +1,7 @@
 import * as DateFns from "date-fns";
 import mapValues from "lodash/mapValues";
 import useSWR from "swr";
-import * as SharedConfig from "../config";
+import * as SharedConfig from "../constants/config";
 
 export const setContractTwitterHandle = async (
   address: string,

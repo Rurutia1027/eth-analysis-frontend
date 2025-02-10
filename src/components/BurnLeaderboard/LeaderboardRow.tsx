@@ -1,16 +1,16 @@
 import type { FC, RefObject } from "react";
 import { useContext } from "react";
 import Skeleton from "react-loading-skeleton";
-import type { CategoryId } from "../../../api/burn-categories";
+import type { CategoryId } from "../../api/burn-categories";
 import {
   categoryDisplayMap,
   getIsKnownCategory,
-} from "../../../api/burn-categories";
-import type * as Contracts from "../../../api/contracts";
-import type { LeaderboardEntry } from "../../../api/leaderboards";
-import type { Unit } from "../../../denomination";
-import { FeatureFlagsContext } from "../../../feature-flags";
-import * as Format from "../../../format";
+} from "../../api/burn-categories";
+import type * as Contracts from "../../api/contracts";
+import type { LeaderboardEntry } from "../../api/leaderboards";
+import type { Unit } from "../../constants/denomination";
+import { FeatureFlagsContext } from "../../contexts/FeatureFlagContext";
+import * as Format from "../../utils/format";
 import { QuantifyTextAnimated } from "../Amount";
 import ImageWithTooltip from "../ImageWithTooltip";
 import AdminControls from "../AdminControls";

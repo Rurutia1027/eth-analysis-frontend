@@ -1,8 +1,8 @@
 import * as React from "react";
-import Accordion from "../../components/Accordion";
-import TranslationsContext from "../../contexts/TranslationsContext";
-import { SectionTitle } from "../../components/TextNext/SectionTitle";
-import { NavigationContext } from "../../contexts/NavigationContext";
+import Accordion from "./Accordion";
+import TranslationsContext from "../contexts/TranslationsContext";
+import { SectionTitle } from "./TextNext/SectionTitle";
+import { NavigationContext } from "../contexts/NavigationContext";
 
 const calcCenterElement = (element: HTMLElement): number => {
   const topEl = element.getBoundingClientRect().y + window.scrollY;

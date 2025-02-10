@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from "react";
 import { useContext } from "react";
 import Skeleton from "react-loading-skeleton";
-import { FeatureFlagsContext } from "../../feature-flags";
+import { FeatureFlagsContext } from "../../contexts/FeatureFlagContext";
 
 type Props = {
   children: ReactNode;

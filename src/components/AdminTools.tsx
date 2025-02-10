@@ -1,8 +1,12 @@
 import type { FC } from "react";
 import { useCallback } from "react";
 import { useContext, useState } from "react";
-import type { Flag } from "../feature-flags";
-import { displayFlagMap, FeatureFlagsContext, flags } from "../feature-flags";
+import type { Flag } from "../contexts/FeatureFlagContext";
+import {
+  displayFlagMap,
+  FeatureFlagsContext,
+  flags,
+} from "../contexts/FeatureFlagContext";
 import { useAdminToken } from "../hooks/use-admin-token";
 import { BaseText } from "./Texts";
 import ToggleSwitch from "./ToggleSwitch";

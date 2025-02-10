@@ -2,11 +2,11 @@ import { differenceInMinutes, differenceInSeconds, parseISO } from "date-fns";
 import type { FC } from "react";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
-import { FeatureFlagsContext } from "../../feature-flags";
-import type { DateTimeString } from "../../time";
-import LabelText from "../../components/TextNext/LabelText";
-import SkeletonText from "../../components/TextNext/SkeletonText";
-import { LabelUnitText } from "../../components/TextNext/LabelUnitText";
+import { FeatureFlagsContext } from "../contexts/FeatureFlagContext";
+import type { DateTimeString } from "../constants/time";
+import LabelText from "./TextNext/LabelText";
+import SkeletonText from "./TextNext/SkeletonText";
+import { LabelUnitText } from "./TextNext/LabelUnitText";
 
 const UpdatedAge: FC<{ updatedAt: DateTimeString | undefined }> = ({
   updatedAt,

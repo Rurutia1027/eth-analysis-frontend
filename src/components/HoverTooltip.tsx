@@ -1,8 +1,8 @@
 import type { FC, ReactNode } from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import { FeatureFlagsContext } from "../../feature-flags";
-import { BaseText } from "../../components/Texts";
+import { FeatureFlagsContext } from "../contexts/FeatureFlagContext";
+import { BaseText } from "./Texts";
 
 const Text = ({ children }: { children: ReactNode }) => (
   <BaseText font="font-inter" color="text-slateus-300" size="text-xs">

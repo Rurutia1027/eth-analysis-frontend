@@ -2,13 +2,13 @@ import type { FC, ReactNode } from "react";
 import React, { useContext } from "react";
 import CountUp from "react-countup";
 import Skeleton from "react-loading-skeleton";
-import type { Unit } from "../../denomination";
-import { FeatureFlagsContext } from "../../feature-flags";
-import * as Format from "../../format";
+import type { Unit } from "../constants/denomination";
+import { FeatureFlagsContext } from "../contexts/FeatureFlagContext";
+import * as Format from "../utils/format";
 import { AmountUnitSpace } from "./Spacing";
-import { UnitText } from "./../../components/Texts";
-import QuantifyText from "../../components/TextNext/QuantifyText";
-import SkeletonText from "../../components/TextNext/SkeletonText";
+import { UnitText } from "./Texts";
+import QuantifyText from "./TextNext/QuantifyText";
+import SkeletonText from "./TextNext/SkeletonText";
 
 type PercentAmountProps = {
   amountPostfix?: string;

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import SiteMetadata from "../site-metadata";
+import SiteMetadata from "../constants/site-metadata";
 
 class MyDocument extends Document {
   render() {

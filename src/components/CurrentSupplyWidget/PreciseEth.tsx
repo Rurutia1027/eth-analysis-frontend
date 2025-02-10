@@ -6,7 +6,7 @@ import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useCallback } from "react";
 import CountUp from "react-countup";
-import QuantifyText from "../../../components/TextNext/QuantifyText";
+import QuantifyText from "../TextNext/QuantifyText";
 import { defaultMoneyAnimationDuration } from "../Amount";
 
 // For a wei number 119,144,277,858,326,743,920,488,300 we want to display the
