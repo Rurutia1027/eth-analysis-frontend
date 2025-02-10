@@ -2,9 +2,9 @@ import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import roundNerdLarge from "../../../assets/round-nerd-large.svg";
 import type { FC, ReactNode } from "react";
-import { BaseText, TooltipTitle } from "../../../components/Texts";
-import type { SupplyParts } from "../../../api/supply-parts";
-import LabelText from "../../../components/TextNext/LabelText";
+import { BaseText, TooltipTitle } from "../Texts";
+import type { SupplyParts } from "../../api/supply-parts";
+import LabelText from "../TextNext/LabelText";
 import PreciseEth from "./PreciseEth";
 
 const FormulaText: FC<{

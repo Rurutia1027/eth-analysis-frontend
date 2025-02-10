@@ -1,4 +1,4 @@
-import { EAlt, OAlt, TEAlt, sum } from "../fp";
+import { EAlt, OAlt, TEAlt, sum } from "../utils/fp";
 import * as E from "fp-ts/lib/Either";
 import * as O from "fp-ts/lib/Option";
 import * as T from "fp-ts/lib/Task";

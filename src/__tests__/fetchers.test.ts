@@ -3,7 +3,7 @@ import {
   absoluteUrlFromUrl,
   ApiError,
   FetchError,
-} from "../fetchers";
+} from "../utils/fetchers";
 
 global.fetch = jest.fn();
 

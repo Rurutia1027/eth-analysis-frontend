@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import type { TimeFrame } from "../time-frames";
+import type { TimeFrame } from "../utils/time-frames";
 import { fetchJsonSwr } from "./fetchers";
 
 export const categoryId = [

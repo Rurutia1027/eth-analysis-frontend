@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import BasicErrorBoundary from "../../../components/BasicErrorBoundary";
+import BasicErrorBoundary from "../../components/BasicErrorBoundary";
 
 const withBasicErrorBoundary = function <A extends Record<string, unknown>>(
   Component: FC<A>,

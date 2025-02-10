@@ -1,14 +1,14 @@
 import { differenceInDays } from "date-fns";
 import type { FC } from "react";
 import { useEffect, useState } from "react";
-import LabelText from "../../components/TextNext/LabelText";
-import { LondonHardForkTooltip } from "../../components/TimeFrameControl";
-import { londonHardFork, mergeDateTime } from "../../dates";
-import { millisFromHours } from "../../duration";
-import { formatZeroDecimals } from "../../format";
-import type { TimeFrame } from "../../time-frames";
-import { displayLimitedTimeFrameMap } from "../../time-frames";
-import type { OnClick } from "../../components/TimeFrameControl";
+import LabelText from "./TextNext/LabelText";
+import { LondonHardForkTooltip } from "./TimeFrameControl";
+import { mergeDateTime, londonHardFork } from "../constants/dates";
+import { millisFromHours } from "../constants/duration";
+import { formatZeroDecimals } from "../utils/format";
+import type { TimeFrame } from "../utils/time-frames";
+import { displayLimitedTimeFrameMap } from "../utils/time-frames";
+import type { OnClick } from "./TimeFrameControl";
 
 export const getFormattedDays = (
   now: Date,

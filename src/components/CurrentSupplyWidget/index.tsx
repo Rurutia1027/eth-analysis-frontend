@@ -1,12 +1,9 @@
 import type { FC } from "react";
 import { useState } from "react";
-import WidgetErrorBoundary from "../../../components/WidgetErrorBoundary";
-import {
-  WidgetBackground,
-  WidgetTitle,
-} from "../../../components/WidgetSubcomponents";
-import { dateTimeFromSlot } from "../../../time";
-import { ethSupplyFromParts, useSupplyParts } from "../../../api/supply-parts";
+import WidgetErrorBoundary from "../WidgetErrorBoundary";
+import { WidgetBackground, WidgetTitle } from "../WidgetSubcomponents";
+import { dateTimeFromSlot } from "../../constants/time";
+import { ethSupplyFromParts, useSupplyParts } from "../../api/supply-parts";
 import HoverTooltip from "../HoverTooltip";
 import Nerd from "../Nerd";
 import UpdatedAge from "../UpdatedAge";

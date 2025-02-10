@@ -2,12 +2,12 @@ import * as DateFns from "date-fns";
 import JSBI from "jsbi";
 import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
-import type { Slot } from "../beacon-units";
-import * as Duration from "../duration";
-import type { EthNumber, GweiString, WeiJSBI } from "../eth-units";
-import { WEI_PER_ETH } from "../eth-units";
-import { WEI_PER_GWEI_JSBI } from "../eth-units";
-import type { ApiResult } from "../fetchers";
+import type { Slot } from "../constants/beacon-units";
+import * as Duration from "../constants/duration";
+import type { EthNumber, GweiString, WeiJSBI } from "../constants/eth-units";
+import { WEI_PER_ETH } from "../constants/eth-units";
+import { WEI_PER_GWEI_JSBI } from "../constants/eth-units";
+import type { ApiResult } from "../utils/fetchers";
 import { fetchApiJson, fetchJsonSwr } from "./fetchers";
 
 export type SupplyPartsF = {
