@@ -1,13 +1,13 @@
 import range from "lodash/range";
 import type { FC, RefObject } from "react";
 import { memo, useCallback, useRef, useState } from "react";
-import type { TimeFrame } from "../../time-frames";
+import type { TimeFrame } from "../../../time-frames";
 import { usePopper } from "react-popper";
 import WidgetErrorBoundary from "../../../components/WidgetErrorBoundary";
 import type { Unit } from "../../../denomination";
 import { useAdminToken } from "../../../hooks/use-admin-token";
 import scrollbarStyles from "../../../styles/Scrollbar.module.scss";
-import { useContractsFreshness } from "../../api/contracts";
+import { useContractsFreshness } from "../../../api/contracts";
 import type { OnClick } from "../../../components/TimeFrameControl";
 import { divide } from "lodash";
 

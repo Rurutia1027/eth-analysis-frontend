@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomMonetaryPremiumSection from "../../mainsite/sections/MonetaryPremiumSection";
+import CustomSupplyProjectionSection from "../../../dashboards/sections/SupplyProjectionSection";
 
 const meta = {
-  title: "Sections/MonetaryPremiumSection",
-  component: CustomMonetaryPremiumSection,
+  title: "Sections/SupplyProjectionSection",
+  component: CustomSupplyProjectionSection,
   parameters: {
     layout: "fullscreen",
   },

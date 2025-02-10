@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomBurnDashboard from "../../mainsite/sections/BurnDashboard";
+import CustomTotalValueSecuredSection from "../../../dashboards/sections/TotalValueSecuredSection";
 
 const meta = {
-  title: "Sections/BurnDashboard",
-  component: CustomBurnDashboard,
+  title: "Sections/TotalValueSecuredSection",
+  component: CustomTotalValueSecuredSection,
   parameters: {
     layout: "fullscreen",
   },

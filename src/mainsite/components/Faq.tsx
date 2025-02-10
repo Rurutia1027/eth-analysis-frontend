@@ -1,6 +1,6 @@
 import * as React from "react";
 import Accordion from "../../components/Accordion";
-import TranslationsContext from "../contexts/TranslationsContext";
+import TranslationsContext from "../../contexts/TranslationsContext";
 import { SectionTitle } from "../../components/TextNext/SectionTitle";
 import { NavigationContext } from "../../contexts/NavigationContext";
 

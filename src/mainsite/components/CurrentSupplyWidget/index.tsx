@@ -6,7 +6,7 @@ import {
   WidgetTitle,
 } from "../../../components/WidgetSubcomponents";
 import { dateTimeFromSlot } from "../../../time";
-import { ethSupplyFromParts, useSupplyParts } from "../../api/supply-parts";
+import { ethSupplyFromParts, useSupplyParts } from "../../../api/supply-parts";
 import HoverTooltip from "../HoverTooltip";
 import Nerd from "../Nerd";
 import UpdatedAge from "../UpdatedAge";

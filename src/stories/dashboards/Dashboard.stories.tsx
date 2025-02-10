@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
+import CustomDashboard from "../../dashboards/Dashboards";
 import { StoryObj } from "@storybook/react";
-import CustomTotalValueSecuredSection from "../../mainsite/sections/TotalValueSecuredSection";
 
 const meta = {
-  title: "Sections/TotalValueSecuredSection",
-  component: CustomTotalValueSecuredSection,
+  title: "Dashboards/CustomDashboard",
+  component: CustomDashboard,
   parameters: {
     layout: "fullscreen",
   },

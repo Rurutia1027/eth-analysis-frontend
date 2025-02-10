@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomJoinDiscoradSection from "../../mainsite/sections/JoinDiscoradSection";
+import CustomSupplyDashboard from "../../../dashboards/sections/SupplyDashboard";
 
 const meta = {
-  title: "Sections/JoinDiscoradSection",
-  component: CustomJoinDiscoradSection,
+  title: "Sections/SupplyDashboard",
+  component: CustomSupplyDashboard,
   parameters: {
     layout: "fullscreen",
   },

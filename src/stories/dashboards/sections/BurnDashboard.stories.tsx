@@ -1,10 +1,10 @@
 import { within, userEvent, expect } from "@storybook/test";
 import { StoryObj } from "@storybook/react";
-import CustomPoapSection from "../../mainsite/sections/PoapSection";
+import CustomBurnDashboard from "../../../dashboards/sections/BurnDashboard";
 
 const meta = {
-  title: "Sections/PoapSection",
-  component: CustomPoapSection,
+  title: "Sections/BurnDashboard",
+  component: CustomBurnDashboard,
   parameters: {
     layout: "fullscreen",
   },
