@@ -32,7 +32,7 @@ jobs:
 
       - name: Build the project
         run: |
-          yarn build  --no-lint
+          yarn build
 
       - name: Run tests
         run: |
