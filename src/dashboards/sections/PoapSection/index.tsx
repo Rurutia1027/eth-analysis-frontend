@@ -217,7 +217,7 @@ const Claimer: FC<{ handle: string; src: string | null; index: number }> = ({
   return (
     <a
       href={`https://twitter.com/${handle}`}
-      ref="noreferrer"
+      rel="noreferrer"
       target="_blank"
       className={` relative mt-0.5 ${index !== 0 ? "-ml-2" : ""}
         h-[40px] w-[40px] min-w-[40px]
