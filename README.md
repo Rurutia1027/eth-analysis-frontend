@@ -43,7 +43,7 @@ git clone https://github.com/Rurutia1027/eth-analysis-frontend.git
 #### **2️⃣ Install Dependencies**
 
 ```bash
-npm install && yarn build
+npm install && yarn build --no-lint
 ```
 
 #### **3️⃣ Start Development Server**

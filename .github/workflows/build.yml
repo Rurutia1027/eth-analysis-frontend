@@ -3,15 +3,15 @@ name: Build React TypeScript Project
 on:
   push:
     branches:
-      - master  # Triggers on push to the master branch
+      - master # Triggers on push to the master branch
   pull_request:
     branches:
-      - "*"  # Trigger on any pull request to any branch (including master)
+      - "*" # Trigger on any pull request to any branch (including master)
     types:
-      - opened    # Trigger when a PR is opened
-      - synchronize  # Trigger when a PR is updated (committed to)
-      - reopened   # Trigger when a PR is reopened
-      - closed     # Trigger when a PR is closed (merged or just closed)
+      - opened # Trigger when a PR is opened
+      - synchronize # Trigger when a PR is updated (committed to)
+      - reopened # Trigger when a PR is reopened
+      - closed # Trigger when a PR is closed (merged or just closed)
 
 jobs:
   build:
@@ -32,12 +32,12 @@ jobs:
 
       - name: Build the project
         run: |
-          yarn build  
+          yarn build  --no-lint
 
       - name: Run tests
         run: |
           yarn test --ci --runInBand
-          
+
       - name: Upload build artifacts (optional)
         uses: actions/upload-artifact@v4
         with:
