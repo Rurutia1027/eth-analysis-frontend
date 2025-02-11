@@ -15,8 +15,12 @@ import {
   useFeatureFlags,
 } from "../contexts/FeatureFlagContext";
 import { formatZeroDecimals } from "../utils/format";
-import ContactSection from "./sections/ContactSection";
-import type { TimeFrame, getNextTimeFrame } from "../utils/time-frames";
+import { ContactSection } from "./sections/ContactSection";
+import {
+  TimeFrame,
+  getNextTimeFrame,
+  getPreviousTimeFrame,
+} from "../utils/time-frames";
 import FaqBlock from "../components/Faq";
 import BurnDashboard from "./sections/BurnDashboard";
 import GasSection from "./sections/GasSection";
@@ -27,9 +31,62 @@ import TotalValueSecuredSection from "./sections/TotalValueSecuredSection";
 import MonetaryPremiumSection from "./sections/MonetaryPremiumSection";
 import FamSection from "./sections/FamSection";
 import { PoapSection } from "./sections/PoapSection";
+import { useRouter } from "next/router";
 
 const Dashboard: FC = () => {
   const { featureFlags, setFlag } = useFeatureFlags();
+  const router = useRouter();
+  const timeFrame = (router.query.timeFrame as TimeFrame) || "d7";
+  const videoEl = useRef<HTMLVideoElement>(null);
+  const { simulateDeflationary } = featureFlags;
+  const showVideo = simulateDeflationary;
+
+  const handleClickTimeFrame = useCallback(
+    async (e: MouseEvent<HTMLElement>) => {
+      const newTimeFrame = e.shiftKey
+        ? getPreviousTimeFrame(timeFrame)
+        : getNextTimeFrame(timeFrame);
+
+      await router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            timeFrame: newTimeFrame,
+          },
+        },
+        undefined,
+        { shallow: true },
+      );
+    },
+    [timeFrame, router],
+  );
+
+  const handleToggleBatLoop = useCallback(() => {
+    if (videoEl.current === null) {
+      return;
+    }
+    videoEl.current.paused
+      ? videoEl.current.play().catch(console.error)
+      : videoEl.current.pause();
+  }, []);
+
+  const handleSetTimeFrame = useCallback(
+    async (newTimeFrame: TimeFrame) => {
+      await router.push(
+        {
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            timeFrame: newTimeFrame,
+          },
+        },
+        undefined,
+        { shallow: true },
+      );
+    },
+    [router],
+  );
 
   return (
     <FeatureFlagsContext.Provider value={featureFlags}>
