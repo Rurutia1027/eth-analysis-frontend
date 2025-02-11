@@ -18,12 +18,17 @@ import { useInView } from "react-intersection-observer";
 import { FixedSizeList } from "react-window";
 import useSWR from "swr";
 
+// import scss styles
+import scrollbarStyles from "../../../styles/Scrollbar.module.scss";
+
 // import components
 import { BaseText, TooltipTitle } from "../../../components/Texts";
 import LabelText from "../../../components/TextNext/LabelText";
 import Twemoji from "../../../components/Twemoji";
 import LinkText from "../../../components/TextNext/LinkText";
 import { WidgetBackground } from "../../../components/WidgetSubcomponents";
+import { SectionTitle } from "../../../components/TextNext/SectionTitle";
+import WidgetErrorBoundary from "../../../components/WidgetErrorBoundary";
 
 // import hooks
 import { TwitterAuthStatus } from "../../../hooks/use-twitter-auth";
@@ -32,6 +37,7 @@ import { AuthFromSection } from "../../../hooks/use-auth-from-section";
 // import constant
 import { DateTimeString } from "../../../constants/time";
 import * as SharedConfig from "../../../constants/config";
+import * as Format from "../../../utils/format";
 
 // import api
 import { Linkables } from "../../../api/profiles";
@@ -50,6 +56,9 @@ import speakNoEvilSvg from "./speak-no-evil-own.svg";
 import ultraSoundPoapStill from "./ultrasoundpoapstill.png";
 import ultraSoundPoapGif from "./utlra_sound_poap.gif";
 import { fetchJsonSwr } from "../../../api/fetchers";
+import QuantifyText from "../../../components/TextNext/QuantifyText";
+import SkeletonText from "../../../components/TextNext/SkeletonText";
+import { A } from "../../../utils/fp";
 
 type ClaimPoapTooltipProps = {
   className?: string;
@@ -194,7 +203,46 @@ type PoapsClaimed = {
   latest_claimers: RecentCliamAccount[];
 };
 
-const PoapSection: FC = () => {
+const Claimer: FC<{ handle: string; src: string | null; index: number }> = ({
+  handle,
+  index,
+  src,
+}) => {
+  const [imgSrc, setImgSrc] = useState<string | StaticImageData | null>(src);
+
+  // call back function: if setting img src load failed will load local question svg image instead.
+  const onImageError = useCallback(() => {
+    setImgSrc(questionMarkSvg as StaticImageData);
+  }, []);
+  return (
+    <a
+      href={`https://twitter.com/${handle}`}
+      rel="noreferrer"
+      target="_blank"
+      className={` relative mt-0.5 ${index !== 0 ? "-ml-2" : ""}
+        h-[40px] w-[40px] min-w-[40px]
+        rounded-full
+        border border-slateus-200
+        hover:brightness-90
+        active:brightness-75`}
+      style={{ zIndex: 10 - index }}
+    >
+      <Image
+        alt={`profile image of ${handle}`}
+        className={"max-h-[40px] max-w-[40px] select-none rounded-full"}
+        onError={onImageError}
+        src={imgSrc === null ? (questionMarkSvg as StaticImageData) : imgSrc}
+        layout="fill"
+        sizes="40px"
+      />
+    </a>
+  );
+};
+
+const PoapSection: FC<{
+  setTwitterAuthStatus: Dispatch<SetStateAction<TwitterAuthStatus>>;
+  twitterAuthStatus: TwitterAuthStatus;
+}> = ({ setTwitterAuthStatus, twitterAuthStatus }) => {
   const { data: poapsClaimed, mutate } = useSWR<PoapsClaimed, Error>(
     `${SharedConfig.usmDomainFromEnv()}/api/v2/fam/poap/claimed`,
     fetchJsonSwr,
@@ -215,11 +263,92 @@ const PoapSection: FC = () => {
 
   const id: AuthFromSection = "poap";
 
+  const handleRefreshClaimStatus = useCallback(() => {
+    mutate().catch(captureException);
+  }, [mutate]);
+
+  const handleClickPoap = useCallback(() => {
+    if (animatePoap) {
+      setAnimatePoap(false);
+      if (typeof animationTimeoutId.current === "number") {
+        window.clearTimeout(animationTimeoutId.current);
+      }
+      return;
+    }
+
+    setAnimatePoap(true);
+    animationTimeoutId.current = window.setTimeout(() => {
+      setAnimatePoap(false);
+    }, 5000);
+  }, [animatePoap]);
+
   return (
-    <>
-      <h1>PoapSection</h1>
-      <ClaimPoapTooltip />
-    </>
+    <section className="px-4 md:px-16" id={id}>
+      <SectionTitle className="mt-16 pt-16" link="poap" subtitle="only 1,559">
+        ultra sound POAP
+      </SectionTitle>
+
+      <div className="my-12 flex justify-center">
+        <div
+          className="flex cursor-pointer select-none"
+          ref={ref}
+          onClick={handleClickPoap}
+        >
+          <Image
+            className="select-none"
+            alt="image from the ultra sound money poap given out to pre-merge fam"
+            src={animatePoap ? ultraSoundPoapGif : ultraSoundPoapStill}
+            width={144}
+            height={144}
+          />
+        </div>
+      </div>
+      <div className="grid auto-rows-min gap-4 lg:grid-cols-2">
+        <WidgetBackground className="flex flex-col gap-y-8 overflow-hidden">
+          <div className="flex flex-col gap-y-4">
+            <LabelText>claims</LabelText>
+            <QuantifyText className="text-3xl">
+              <SkeletonText width="4rem">
+                {poapsClaimed === undefined
+                  ? undefined
+                  : Format.formatZeroDecimals(poapsClaimed.count)}
+              </SkeletonText>
+              <span className="text-slate-200">/1,559</span>
+            </QuantifyText>
+          </div>
+          <div className="flex flex-col gap-y-4">
+            <LabelText>latest claimers</LabelText>
+            <div
+              className={`flex w-full overflow-x-scroll pb-2 ${scrollbarStyles["styled-scrollbar"]} ${scrollbarStyles["styled-scrollbar-horizontal"]}`}
+            >
+              {poapsClaimed?.latest_claimers
+                .slice(0, 10)
+                .map((claimer, index) => (
+                  <Claimer
+                    key={claimer.twitter_id}
+                    handle={claimer.handle}
+                    src={claimer.profile_image_url}
+                    index={index}
+                  />
+                ))}
+            </div>
+          </div>
+        </WidgetBackground>
+        <WidgetErrorBoundary title="claim POAP">
+          <ClaimPoap
+            className="col-start-1"
+            refreshClaimStatus={handleRefreshClaimStatus}
+            twitterAuthStatus={twitterAuthStatus}
+            setTwitterAuthStatus={setTwitterAuthStatus}
+          />
+        </WidgetErrorBoundary>
+        <WidgetErrorBoundary title="Eligible Handles">
+          <div className="row-span-2 lg:col-start-2 lg:row-start-1">
+            Add EligibleHandles Here{" "}
+          </div>
+        </WidgetErrorBoundary>
+      </div>
+    </section>
   );
 };
 

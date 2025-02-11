@@ -3,7 +3,7 @@ name: Deploy React TypeScript Project
 on:
   push:
     branches:
-      - close  
+      - close
 
 jobs:
   deploy:
@@ -19,11 +19,11 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        run: |        
+        run: |
           yarn install
 
       - name: Build the project
-        run: |         
+        run: |
           yarn build
 
       - name: Deploy to production

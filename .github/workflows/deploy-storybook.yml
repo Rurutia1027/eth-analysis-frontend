@@ -1,7 +1,7 @@
 name: Deploy Storybook to Vercel
 
-on: 
-  push: 
+on:
+  push:
     branches:
       - master
     paths:
@@ -12,7 +12,7 @@ on:
     branches:
       - "*"
 
-jobs: 
+jobs:
   install-dependencies:
     runs-on: ubuntu-latest
     outputs:
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install Node.js
         uses: actions/setup-node@v4
-        with: 
-          node-version: 18 
+        with:
+          node-version: 18
 
       - name: Install dependencies and vercel
         run: |
@@ -53,8 +53,8 @@ jobs:
 
       - name: Install Node.js
         uses: actions/setup-node@v4
-        with: 
-          node-version: 18 
+        with:
+          node-version: 18
 
       - name: Restore node_modules
         uses: actions/cache@v3
