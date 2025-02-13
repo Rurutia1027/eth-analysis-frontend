@@ -31,15 +31,16 @@ const StoryPreview: NextPage<StaticProps> = ({ fallback = {} }) => (
       />
       <meta property="og:title" content={SiteMetadata.title} />
       <meta property="og:description" content={SiteMetadata.description} />
-      <meta property="og:url" content="https://ultrasound.money" />
+      <meta property="og:url" content="https://eth-analysis-ui.vercel.app/" />
     </Head>
 
-    <Script
+    {/* <Script
       defer
       data-domain="ultrasound.money"
       data-api="https://ultrasound.money/cfw/event"
       src="https://ultrasound.money/cfw/script.js"
-    />
+    /> */}
+    
     <SWRConfig
       value={{
         fallback,
