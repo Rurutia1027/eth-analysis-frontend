@@ -1,56 +1,15 @@
 type Env = "dev" | "prod" | "stag";
 
 export const envFromEnv = (): Env => {
-  const rawEnv = process.env.NEXT_PUBLIC_ENV;
-
-  switch (rawEnv) {
-    case "prod":
-      return "prod";
-    case "dev":
-      return "dev";
-    case "staging":
-      return "stag";
-    default:
-      console.warn("no ENV in env, defaulting to dev");
-      return "dev";
-  }
+  return "prod"; 
 };
 
 export const apiEnvFromEnv = (): Env => {
-  const apiEnv = process.env.NEXT_PUBLIC_API_ENV;
-
-  // If API_ENV is undefined, we decide based on ENV
-  if (apiEnv === undefined) {
-    return envFromEnv() === "dev" ? "dev" : "dev";
-  }
-
-  switch (apiEnv) {
-    case "dev":
-      return "dev";
-    case "prod":
-      return "prod";
-    case "production":
-      return "prod";
-    case "staging":
-    case "stag":
-      return "stag";
-    default:
-      return "prod";
-  }
+  return "prod"; 
 };
 
 export const usmDomainFromEnv = (): string => {
-  const apiEnv = apiEnvFromEnv();
-  switch (apiEnv) {
-    case "dev":
-      return "https://ultrasound.money";
-    // todo: modify this as vercel preview url address
-    case "stag":
-      return "https://ultrasound.money";
-    // todo: modify to this as vercel production url address
-    case "prod":
-      return "https://ultrasound.money";
-  }
+  return "https://ultrasound.money";
 };
 
 export const versionFromEnv = (): string => {

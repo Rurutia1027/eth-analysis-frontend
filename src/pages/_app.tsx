@@ -6,6 +6,7 @@ import "../styles/global.css";
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
+      <link rel="manifext" href="../../public/manifest.json"/>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <Component {...pageProps} />

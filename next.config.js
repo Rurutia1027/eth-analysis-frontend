@@ -1,20 +1,11 @@
-const { withSentryConfig } = require("@sentry/nextjs");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE_BUNDLE === "true",
 });
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withSentryConfig(
+const nextConfig =  
   withBundleAnalyzer({
     productionBrowserSourceMaps: true,
-    sentry: {
-      disableServerWebpackPlugin:
-        process.env.NEXT_PUBLIC_ENV !== "stag" &&
-        process.env.NEXT_PUBLIC_ENV !== "prod",
-      disableClientWebpackPlugin:
-        process.env.NEXT_PUBLIC_ENV !== "stag" &&
-        process.env.NEXT_PUBLIC_ENV !== "prod",
-    },
     staticPageGenerationTimeout: 60 * 4,
     output: "standalone",
     reactStrictMode: true,
@@ -36,11 +27,10 @@ const nextConfig = withSentryConfig(
         has: [{ type: "host", value: "localhost" }],
         destination:
           process.env["NEXT_PUBLIC_ENV"] === "stag"
-            ? "https://usm-i7x0.ultrasound.money/api/:path*"
+            ? "https://ultrasound.money/api/:path*"
             : "https://ultrasound.money/api/:path*",
       },
     ],
-  }),
-);
+  });
 
 module.exports = nextConfig;
