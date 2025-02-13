@@ -1,6 +1,6 @@
 import * as SharedConfig from "../constants/config";
-import type { ApiResult } from "../utils/fetchers";
-import { fetchApiJson as fetchApiJsonShared } from "../utils/fetchers";
+import type { ApiResult } from "../utils/axios-fetchers";
+import { fetchApiJson as fetchApiJsonShared } from "../utils/axios-fetchers";
 
 export const fetchApiJson = <A>(url: string): Promise<ApiResult<A>> =>
   fetchApiJsonShared(SharedConfig.usmDomainFromEnv(), url);
