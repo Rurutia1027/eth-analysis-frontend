@@ -6,7 +6,7 @@ The **eth-analysis-frontend** is a modern Ethereum data analysis platform develo
 
 ---
 
-- **Frontend Deployment**: [Frontend Deployment](https://eth-analysis-frontend.vercel.app/)
+- **Frontend Deployment**: [Frontend Deployment](https://eth-analysis-ui.vercel.app/)
 - **Storybook Deployment**: [Storybook Deployment](https://eth-storybook.vercel.app)
 
 ---
