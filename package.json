@@ -10,7 +10,7 @@
     "lint": "next lint",
     "start:stag": "node standalone-stag/server.js",
     "start:prod": "node standalone-prod/server.js",
-    "start": "node .next/standalone/server.js",
+    "start": "node standalone/server.js",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
