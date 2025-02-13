@@ -43,5 +43,7 @@ export const useBaseFeeOverTime = (): BaseFeeOverTime | undefined => {
     console.error("Error fetching data ", error); 
   }
 
+  console.log("fetch data content"); 
+
   return data;
 };
