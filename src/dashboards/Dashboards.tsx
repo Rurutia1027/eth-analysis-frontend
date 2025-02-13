@@ -96,7 +96,10 @@ const Dashboard: FC = () => {
         enableAnimation={true}
       >
         <MainTitle>ultra sound money</MainTitle>
-        <GasSection />
+        <GasSection
+          timeFrame={timeFrame}
+          onClickTimeFrame={handleClickTimeFrame}
+        />
         <BlobGasSection />
         <SupplyProjectionSection />
         <BurnDashboard />
