@@ -24,6 +24,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "aos": "^2.3.4",
+    "axios": "^1.7.9",
     "confetti-js": "^0.0.18",
     "d3-shape": "^3.1.0",
     "date-fns": "^2.29.3",

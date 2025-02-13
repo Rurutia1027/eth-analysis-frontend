@@ -7,7 +7,7 @@ import * as Duration from "../constants/duration";
 import type { EthNumber, GweiString, WeiJSBI } from "../constants/eth-units";
 import { WEI_PER_ETH } from "../constants/eth-units";
 import { WEI_PER_GWEI_JSBI } from "../constants/eth-units";
-import type { ApiResult } from "../utils/fetchers";
+import type { ApiResult } from "../utils/axios-fetchers";
 import { fetchApiJson, fetchJsonSwr } from "./fetchers";
 
 export type SupplyPartsF = {

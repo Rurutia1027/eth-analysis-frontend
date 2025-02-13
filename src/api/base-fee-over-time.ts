@@ -2,7 +2,7 @@ import { secondsToMilliseconds } from "date-fns";
 import useSWR from "swr";
 import type { Gwei, WeiNumber } from "../constants/eth-units";
 import type { DateTimeString } from "../constants/time";
-import type { ApiResult } from "../utils/fetchers";
+import type { ApiResult } from "../utils/axios-fetchers";
 import { fetchApiJson } from "./fetchers";
 import { fetchJsonSwr } from "./fetchers";
 
@@ -33,9 +33,15 @@ export const fetchBaseFeeOverTime = (): Promise<ApiResult<BaseFeeOverTime>> =>
   fetchApiJson<BaseFeeOverTime>(url);
 
 export const useBaseFeeOverTime = (): BaseFeeOverTime | undefined => {
-  const { data } = useSWR<BaseFeeOverTime>(url, fetchJsonSwr, {
-    refreshInterval: secondsToMilliseconds(4),
+  console.log("useBaseFeeOverTime url", url); 
+  const { data, error } = useSWR<BaseFeeOverTime>(url, fetchJsonSwr, {
+    // increase the refresh interval value to avoid fetch too frequent to ultra.money endpoint 
+    refreshInterval: secondsToMilliseconds(10000),
   });
+
+  if (error) { 
+    console.error("Error fetching data ", error); 
+  }
 
   return data;
 };
