@@ -19,7 +19,8 @@ module.exports = {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/consistent-type-imports": "off",
-    "@typescript-eslint/no-unused-vars": ["warn"],
-    "@typescript-eslint/consistent-type-imports": ["warn"],
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
   },
 };

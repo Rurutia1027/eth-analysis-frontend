@@ -50,7 +50,7 @@ const GasSection: FC<{ timeFrame: TimeFrame; onClickTimeFrame: OnClick }> = ({
       : Object.fromEntries(new Map(baseFeesSeries).entries());
 
   return (
-    <Section link="gas" subtitle="gas is the new oil" title="gase">
+    <Section link="gas" subtitle="gas is the new oil" title="gas">
       <div className="floex-col flex w-full gap-x-4 gap-y-4 lg:flex-row">
         <div className="w-full lg:w-1/2">
           <BaseFeesWidget
