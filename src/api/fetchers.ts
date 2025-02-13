@@ -9,6 +9,7 @@ export const fetchApiJson = <A>(url: string): Promise<ApiResult<A>> =>
 // doesn't throw, and add a wrapper for swr which does.
 export const fetchJsonSwr = async <A>(url: string): Promise<A> => {
   const dataOrError = await fetchApiJson<A>(url);
+  
   if ("data" in dataOrError) {
     return dataOrError.data;
   } else {

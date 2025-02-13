@@ -43,13 +43,13 @@ export const usmDomainFromEnv = (): string => {
   const apiEnv = apiEnvFromEnv();
   switch (apiEnv) {
     case "dev":
-      return "https://ultrasound.money/";
+      return "https://ultrasound.money";
     // todo: modify this as vercel preview url address
     case "stag":
-      return "https://ultrasound.money/";
+      return "https://ultrasound.money";
     // todo: modify to this as vercel production url address
     case "prod":
-      return "https://ultrasound.money/";
+      return "https://ultrasound.money";
   }
 };
 
