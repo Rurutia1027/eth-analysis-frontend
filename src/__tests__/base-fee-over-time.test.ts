@@ -10,7 +10,7 @@ import { result } from "lodash";
 import { fetchJsonSwr } from "../api/fetchers";
 
 describe("fetchBaseFeeOverTime", () => {
- it("should return data when API call succeeds", async () => {
+ it("should return data when API call successes", async () => {
   const res = await fetchBaseFeeOverTime();
   expect(res).toBeDefined();
   if ("data" in res) {
@@ -53,22 +53,3 @@ describe("fetchBaseFeeOverTime", () => {
   }
  });
 }); 
-
-
-
-jest.mock('../api/base-fee-over-time', () => ({
-  fetchBaseFeeOverTime: jest.fn().mockResolvedValue({
-    data: {
-      barrier: 'some-value',
-      blob_barrier: 'some-value',
-      block_number: 12345,
-      d1: [],
-      d30: [],
-      d7: [],
-      h1: [],
-      m5: [],
-      since_burn: [],
-      since_merge: [],
-    }
-  })
-}));
