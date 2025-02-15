@@ -100,7 +100,10 @@ const Dashboard: FC = () => {
           timeFrame={timeFrame}
           onClickTimeFrame={handleClickTimeFrame}
         />
-        <BlobGasSection />
+        <BlobGasSection
+          timeFrame={ timeFrame }
+          onClickTimeFrame={ handleClickTimeFrame }
+        />
         <SupplyProjectionSection />
         <BurnDashboard />
         <FlippeningSection />
