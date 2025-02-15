@@ -25,8 +25,7 @@ const mockMax: number = 0.01; // Max base fee for visualization
 const mockOnClickTimeFrame = () => {
  console.log(`Time frame clicked`);
 };
-const mockTimeFrame: string = '1d'; // Time frame example ('1d', '7d', '1m', etc.)
-
+const mockTimeFrame: string = '1d';
 const meta = {
  title: "Sections/BlobGasSection/components/BlobFeesWidget",
  component: BlobFeesWidget,
