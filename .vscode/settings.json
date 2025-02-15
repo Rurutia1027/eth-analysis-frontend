@@ -15,6 +15,9 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.cursorBlinking": "expand",
   "window.zoomLevel": 2,
   "[json]": {

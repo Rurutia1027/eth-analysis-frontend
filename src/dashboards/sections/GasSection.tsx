@@ -10,6 +10,7 @@ import { OnClick } from "../../components/TimeFrameControl";
 import { useBaseFeeOverTime } from "../../api/base-fee-over-time";
 import Section from "../../components/Section";
 import { GasMarketWidget } from "../../components/GasMarketWidget";
+import { GasStreakWidget } from "../../components/GasStreakWidget";
 
 const BaseFeesWidget = dynamic(
   () =>
@@ -69,6 +70,7 @@ const GasSection: FC<{ timeFrame: TimeFrame; onClickTimeFrame: OnClick }> = ({
             onClickTimeFrame={onClickTimeFrame}
             barrierGwei={19.830391430171957}
           />
+          <GasStreakWidget />
         </div>
       </div>
     </Section>
