@@ -14,6 +14,10 @@ const BlobBurnWidget = dynamic(() => import("../../components/BlobBurnWidget"), 
   ssr: false,
 });
 
+const BlobGasMarketWidget = dynamic(() => import("../../components/BlobGasMarketWidget"), {
+  ssr: false,
+});
+
 const BlobFeesWidget = dynamic(() => import("../../components/BlobFeesWidget"), {
   ssr: false,
 });
@@ -66,9 +70,13 @@ const BlobGasSection: FC<{ timeFrame: TimeFrame, onClickTimeFrame: OnClick; }>
             timeFrame={ timeFrame }
             onClickTimeFrame={ onClickTimeFrame }
           />
-
+        </div>
+        <div className="flex w-full flex-col gap-y-4 lg:w-1/2">
           {/* BlobGasMarketWidget */ }
-
+          <BlobGasMarketWidget
+            timeFrame={ timeFrame }
+            onClickTimeFrame={ onClickTimeFrame }
+          />
           {/* BlobBurnWidget */ }
           <BlobBurnWidget
             timeFrame={ timeFrame }
