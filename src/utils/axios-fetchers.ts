@@ -17,7 +17,7 @@ type SafeResponse =
 
 const fetchSafe = async (url: string): Promise<SafeResponse> => {
  try {
-   const res = await axios.get(url, {timeout: 12000});
+   const res = await axios.get(url, { timeout: 52000 });
   return { type: "Response", res };
  } catch (error) {
   if (error instanceof Error) {

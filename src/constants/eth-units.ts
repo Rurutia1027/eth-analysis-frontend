@@ -25,3 +25,8 @@ export type EthUseAmount = {
   eth: EthNumber;
   usd: number;
 };
+
+
+export const GWEI_FORMATTING_THRESHOLD = 1e15; // Threshold in wei below which to convert format as Gwei instead of ETH
+export const MIN_BURN_DECIMALS = 2;
+export const BURN_USD_DECIMALS = 0;
