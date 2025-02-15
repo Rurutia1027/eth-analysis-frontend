@@ -14,6 +14,10 @@ const BlobBurnWidget = dynamic(() => import("../../components/BlobBurnWidget"), 
   ssr: false,
 });
 
+const BlobFeesWidget = dynamic(() => import("../../components/BlobFeesWidget"), {
+  ssr: false,
+});
+
 const pointsFromBaseFeesOverTime = (
   baseFeesD1: BaseFeeAtTime[],
 ): BaseFeePoint[] =>
@@ -55,6 +59,13 @@ const BlobGasSection: FC<{ timeFrame: TimeFrame, onClickTimeFrame: OnClick; }>
         <div className="w-full lg:w-1/2">
 
           {/* BlobFeesWidget */ }
+          <BlobFeesWidget
+            baseFeesSeries={ baseFeesSeries }
+            baseFeesMap={ baseFeesMap ?? {} }
+            max={ max?.[ 1 ] }
+            timeFrame={ timeFrame }
+            onClickTimeFrame={ onClickTimeFrame }
+          />
 
           {/* BlobGasMarketWidget */ }
 
