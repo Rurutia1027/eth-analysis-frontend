@@ -3,7 +3,7 @@ import type { StaticImageData } from "next/legacy/image";
 import Image from "next/legacy/image";
 import type { FC } from "react";
 import CountUp from "react-countup";
-import barrierSvg from "../../assets/barrier-own.svg";
+import barrierSvg from "../assets/barrier-own.svg"
 import batSvg from "../assets/bat-own.svg";
 import speakerSvg from "../assets/speaker-own.svg";
 import LabelText from "./TextNext/LabelText";
@@ -34,7 +34,7 @@ const getPercentage = (
 const getBlockPageLink = (u: number | undefined): string | undefined =>
  typeof u === "undefined" ? undefined : `https://etherescan.io/block/${u}`;
 
-type MarkerProps = {
+export type MarkerProps = {
  barrier: number;
  blockNumber?: number;
  description?: string;
@@ -63,6 +63,8 @@ export const Marker: FC<MarkerProps> = ({
  const styles = useSpring({
   left: `${getPercentage(highest, lowest, gas) * 100}%`
  });
+
+ console.log("styles------", styles);
 
  return (
   <animated.div
@@ -237,6 +239,87 @@ export const GasMarketWidget: FC<Props> = ({
  const title = blobFees ? "blob gas market" : "gas market";
 
  return <WidgetErrorBoundary title={title}>
-  <div>children content for temp</div>
+  <WidgetBackground className="flex flex-col gap-y-4">
+   <div className="flex justify-between">
+    <LabelText>{title}</LabelText>
+    <TimeFrameIndicator timeFrame={timeFrame} onClickTimeFrame={onClickTimeFrame} />
+   </div>
+
+   {!isDataAvailable ? (
+    <div className="flex h-[96px] items-center justify-center">
+     <LabelText color="text-slateus-300">
+      data not available
+     </LabelText>
+    </div>
+   ) : (<div className={`relative my-11 mx-11 flex h-2 rounded-full bg-slateus-600`}>
+    <>
+     <Marker
+      barrier={barrier}
+      blockNumber={baseFeePerGasStatsTimeFrame.min_block_number}
+      description="minimum gas price"
+      gas={baseFeePerGasStatsTimeFrame.min}
+      highest={highest}
+      horizontal="left"
+      label="min"
+      lowest={lowest}
+      markerColor="bg-slateus-400"
+      vertical="bottom"
+     />
+     <Marker
+      barrier={barrier}
+      blockNumber={baseFeePerGasStatsTimeFrame.max_block_number}
+      description="maximum gas price"
+      gas={baseFeePerGasStatsTimeFrame.max}
+      highest={highest}
+      horizontal="right"
+      label="max"
+      lowest={lowest}
+      markerColor="bg-slateus-400"
+      vertical="bottom"
+     />
+     <Marker
+      barrier={barrier}
+      description="average gas price"
+      emphasize
+      gas={baseFeePerGasStatsTimeFrame.average}
+      highest={highest}
+      horizontal={
+       baseFeePerGasStatsTimeFrame.average > barrier
+        ? "right"
+        : "left"
+      }
+      label="average"
+      lowest={lowest}
+      markerColor={
+       deltaPercent >= 0 ? "bg-orange-400" : "bg-blue-400"
+      }
+      vertical="top"
+     />
+     <Marker
+      barrier={barrier}
+      description="ultra sound barrier"
+      emphasize
+      gas={barrier}
+      highest={highest}
+      horizontal={
+       barrier <= baseFeePerGasStatsTimeFrame.average
+        ? "left"
+        : "right"
+      }
+      label="barrier"
+      lowest={lowest}
+      markerColor={
+       deltaPercent >= 0 ? "bg-orange-400" : "bg-blue-400"
+      }
+      vertical="top"
+     />
+    </>
+    {deltaPercent !== undefined && (
+     <div className={`absolute h-2 ${deltaPercent >= 0 ? "bg-orange-400" : "bg-drop"}`}
+      style={{ left: deltaLeft, width: deltaWidth }}>
+     </div>
+    )}
+   </div>)}
+  </WidgetBackground>
  </WidgetErrorBoundary>
 }

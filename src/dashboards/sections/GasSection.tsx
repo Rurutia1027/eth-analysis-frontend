@@ -9,6 +9,7 @@ import { TimeFrame } from "../../utils/time-frames";
 import { OnClick } from "../../components/TimeFrameControl";
 import { useBaseFeeOverTime } from "../../api/base-fee-over-time";
 import Section from "../../components/Section";
+import { GasMarketWidget } from "../../components/GasMarketWidget";
 
 const BaseFeesWidget = dynamic(
   () =>
@@ -60,6 +61,13 @@ const GasSection: FC<{ timeFrame: TimeFrame; onClickTimeFrame: OnClick }> = ({
             max={max?.[1]}
             timeFrame={timeFrame}
             onClickTimeFrame={onClickTimeFrame}
+          />
+        </div>
+        <div className="flex w-full flex-col gap-y-4 lg:w-1/2">
+          <GasMarketWidget
+            timeFrame={timeFrame}
+            onClickTimeFrame={onClickTimeFrame}
+            barrierGwei={19.830391430171957}
           />
         </div>
       </div>
