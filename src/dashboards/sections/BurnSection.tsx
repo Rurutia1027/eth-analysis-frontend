@@ -8,7 +8,7 @@ import BurnLeaderboard from "../../components/BurnLeaderboard";
 import CurrencyControl from "../../components/CurrencyControl";
 import BurnTotal from "../../components/BurnTotal";
 import LatestBlocks from "../../components/LatestBlocks";
-
+import BurnRecords from "../../components/BurnRecords";
 
 const BurnSection: FC<{
   timeFrame: TimeFrame; onClickTimeFrame: OnClick; onSetTimeFrame: OnSetTimeFrame;
@@ -53,7 +53,10 @@ const BurnSection: FC<{
             <LatestBlocks unit={ unit } />
           </div>
           <div className="lg:row-end-4">
-            {/* BurnRecords */ }
+            <BurnRecords
+              onClickTimeFrame={ onClickTimeFrame }
+              timeFrame={ timeFrame }
+            />
           </div>
         </div>
       </Section>

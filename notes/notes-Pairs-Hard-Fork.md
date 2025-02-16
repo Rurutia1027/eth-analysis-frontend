@@ -14,4 +14,4 @@
 ### Conclusion
 
 - So **The Merge** = **Bellatrix(Beacon Chain)** + **Pair (Execution layer switch to PoS)**. 
-- In this project we called the time period **since_merge** = [pairs_hard_fork, now) as a time frame. 
+- In this project we called the time period **since_merge** = [pairs_hard_fork, now) as a time frame unit. 
