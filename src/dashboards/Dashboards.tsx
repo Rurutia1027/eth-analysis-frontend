@@ -22,7 +22,6 @@ import {
   getPreviousTimeFrame,
 } from "../utils/time-frames";
 import FaqBlock from "../components/Faq";
-import BurnDashboard from "./sections/BurnDashboard";
 import GasSection from "./sections/GasSection";
 import BlobGasSection from "./sections/BlobGasSection";
 import SupplyProjectionSection from "./sections/SupplyProjectionSection";
@@ -32,6 +31,7 @@ import MonetaryPremiumSection from "./sections/MonetaryPremiumSection";
 import FamSection from "./sections/FamSection";
 import { PoapSection } from "./sections/PoapSection";
 import { useRouter } from "next/router";
+import BurnSection from "./sections/BurnSection";
 
 const Dashboard: FC = () => {
   const { featureFlags, setFlag } = useFeatureFlags();
@@ -105,7 +105,11 @@ const Dashboard: FC = () => {
           onClickTimeFrame={ handleClickTimeFrame }
         />
         <SupplyProjectionSection />
-        <BurnDashboard />
+        <BurnSection
+          timeFrame={ timeFrame }
+          onClickTimeFrame={ handleClickTimeFrame }
+          onSetTimeFrame={ handleSetTimeFrame }
+        />
         <FlippeningSection />
         <TotalValueSecuredSection />
         <MonetaryPremiumSection />
