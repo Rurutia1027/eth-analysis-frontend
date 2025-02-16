@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import type { TimeFrame } from "../utils/time-frames";
-import { fetchJsonSwr } from "./fetchers";
+import { fetchApiJson, fetchJsonSwr } from "./fetchers";
+import { ApiResult } from "../utils/axios-fetchers";
 
 export const categoryId = [
   "cex",
@@ -53,11 +54,13 @@ export type BurnCategory = {
 
 export type BurnCategories = Record<TimeFrame, BurnCategory[]>;
 
+const url = "/api/fees/burn-categories";
+
+export const fetchBurnCategories = (): Promise<ApiResult<BurnCategories>> =>
+  fetchApiJson<BurnCategories>(url);
+
 export const useBurnCategories = () => {
-  const { data } = useSWR<BurnCategories>(
-    "/api/fees/burn-categories",
-    fetchJsonSwr,
-  );
+  const { data } = useSWR<BurnCategories>(url, fetchJsonSwr);
 
   return data;
 };
