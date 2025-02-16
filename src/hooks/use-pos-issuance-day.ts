@@ -3,7 +3,7 @@ import { DAYS_PER_YEAR } from "../constants/time";
 import { useGaugeRates, fetchGaugeRates } from "../api/gauge-rate";
 
 export const usePosIssuancePerDay = (): EthNumber =>
-  useGaugeRates().d7.issuance_rate_yearly.eth / DAYS_PER_YEAR;
+  useGaugeRates()?.d7.issuance_rate_yearly.eth / DAYS_PER_YEAR;
 
 export const fetchPosIssuancePerDay = async (): Promise<EthNumber> => {
   try {
