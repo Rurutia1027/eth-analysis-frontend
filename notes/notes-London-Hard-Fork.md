@@ -10,3 +10,5 @@
 - Set the foundation for future scalability improvements. 
 
 
+### Conclusion 
+- In this project we called the time period **since_burn** = [london_hard_fork, now) as a time frame unit. 

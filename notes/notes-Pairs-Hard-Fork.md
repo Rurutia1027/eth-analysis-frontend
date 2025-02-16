@@ -11,6 +11,7 @@
 - Triggered when **Terminal Total Difficulty(TTD) was reached**, repalcing **Proof-of-Work(PoW)** with **Proof-of-Stake(PoS)** on Ethereum's **execution layer**.
 - This was the moment Ethereum **stopped using miners** and fully transitioned to **PoS**.  
 
-### Conclusion 
+### Conclusion
 
 - So **The Merge** = **Bellatrix(Beacon Chain)** + **Pair (Execution layer switch to PoS)**. 
+- In this project we called the time period **since_merge** = [pairs_hard_fork, now) as a time frame. 
