@@ -24,7 +24,7 @@ import {
 import FaqBlock from "../components/Faq";
 import GasSection from "./sections/GasSection";
 import BlobGasSection from "./sections/BlobGasSection";
-import SupplyProjectionSection from "./sections/SupplyProjectionSection";
+import SupplyProjectionSection from "./sections/SupplyProjectionsSection";
 import FlippeningSection from "./sections/FlippeningSection";
 import TotalValueSecuredSection from "./sections/TotalValueSecuredSection";
 import MonetaryPremiumSection from "./sections/MonetaryPremiumSection";
