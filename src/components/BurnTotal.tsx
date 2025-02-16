@@ -56,14 +56,10 @@ type Props = {
 };
 
 const BurnTotal: FC<Props> = ({ onClickTimeFrame, timeFrame, unit }) => {
- const groupedAnalysis1F = useGroupedAnalysis1();
- const groupedAnalysis1 =
-  groupedAnalysis1F !== undefined
-   ? decodeGroupedAnalysis1(groupedAnalysis1F)
-   : undefined;
-
- const burnRates = groupedAnalysis1?.burnRates;
- const feesBurned = groupedAnalysis1?.feesBurned;
+  const groupedAnalysis1F = useGroupedAnalysis1(); const groupedAnalysis1 =
+    groupedAnalysis1F !== undefined ? decodeGroupedAnalysis1(groupedAnalysis1F) : undefined;
+  const burnRates = groupedAnalysis1?.burnRates;
+  const feesBurned = groupedAnalysis1?.feesBurned;
 
  // EIP-1559
  const [ millisecondsSinceLondonHardFork, setMillisecondsSinceLondonHardfork ] =
@@ -76,10 +72,12 @@ const BurnTotal: FC<Props> = ({ onClickTimeFrame, timeFrame, unit }) => {
  // post issuance per day 
  const posIssuancePerDay = usePosIssuancePerDay();
 
- const selectedFeesBurnedEth =
-  feesBurned === undefined
-   ? undefined
-   : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ];
+  const selectedFeesBurnedEth =
+    feesBurned === undefined
+      ? undefined
+      : unit === "eth"
+        ? feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ]
+        : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "usd" ] ]
 
  // check whether the unit is in ETH or in USD 
  const selectedFeesBurned =
@@ -122,16 +120,31 @@ const BurnTotal: FC<Props> = ({ onClickTimeFrame, timeFrame, unit }) => {
    ? undefined
    : Format.ethFromWei(selectedFeesBurnedEth) / selectedIssuance;
 
- return <WidgetErrorBoundary title="burn total">
-  <WidgetBackground className="relative">
-   <div className="pointer-events-none absolute left-0 right-0 top-0 bottom-0 overflow-hidden rounded-lg">
-    <div className={ `
-       top-15 
-       absolute -left-20 h-full w-full opacity-[0.13] blur-[50px] will-change-transform md:top-20 md:blur-[70px]` }>
-     <div className={ `absolute h-4/5 w-4/5 rounded-[35%] bg-[#243AFF] md:h-3/5 md:w-3/5` }></div>
-    </div>
-    <div
-     className={ `
+  return (
+    <WidgetErrorBoundary title="burn total">
+      <WidgetBackground className="relative">
+        <div className="pointer-events-none absolute left-0 right-0 top-0 bottom-0 overflow-hidden rounded-lg">
+          <div
+            className={ `
+              top-15
+              absolute -left-20 h-full
+              w-full opacity-[0.13]
+              blur-[50px]
+              will-change-transform
+              md:top-20
+              md:blur-[70px]
+            `}
+          >
+            <div
+              className={ `
+                absolute h-4/5 w-4/5 rounded-[35%] bg-[#243AFF]
+                md:h-3/5
+                md:w-3/5
+              `}
+            ></div>
+          </div>
+          <div
+            className={ `
               absolute
               top-0 -left-20 h-full
               w-full opacity-[0.25]
@@ -139,82 +152,97 @@ const BurnTotal: FC<Props> = ({ onClickTimeFrame, timeFrame, unit }) => {
               will-change-transform md:top-5
               md:blur-[70px]
             `}
-    >
-     <div className={ `
-     absolute -left-5 h-4/5 w-full rounded-[35%] bg-[#FF8D24] md:left-0 
-     md:h-3/5 md:w-4/5` }></div>
-    </div>
-   </div>
-   <div className="flex items-baseline justify-between">
-    <WidgetTitle>burn total</WidgetTitle>
-    <TimeFrameIndicator onClickTimeFrame={ onClickTimeFrame }
-     timeFrame={ timeFrame } />
-   </div>
-   <div className="flex flex-col gap-y-4 pt-4">
-    <div className="flex items-center">
-     <AmountAnimatedShell skeletonWidth="9rem"
-      size="text-2xl md:text-3xl lg:text-3xl xl:text-4xl"
-      unitText={ unit === "eth" ? "ETH" : "USD" }>
-      <CountUp
-       decimals={ unit === "eth" ? 2 : 0 }
-       duration={ 0.8 }
-       end={
-        selectedFeesBurned === undefined
-         ? 0
-         : unit === "eth"
-          ? Format.ethFromWei(selectedFeesBurned)
-          : selectedFeesBurned
-       }
-       preserveValue={ true }
-       separator=","
-      />
-     </AmountAnimatedShell>
-     <div className="ml-4 h-6 w-6 select-none md:ml-8 lg:h-8 lg:w-8">
-      <Image
-       alt="fire emoji symbolizing ETH burned"
-       src={ fireSvg as StaticImageData }
-      />
-     </div>
-    </div>
-    <div className="flex flex-col justify-between gap-y-4 lg:flex-row">
-     <div className="flex flex-col gap-y-4">
-      <WidgetTitle>burn rate</WidgetTitle>
-      <AmountAnimatedShell
-       skeletonWidth="4rem"
-       size="text-2xl md:text-3xl lg:text-3xl xl:text-4xl">
-       <CountUp
-        decimals={ unit === "eth" ? 2 : 1 }
-        duration={ 0.8 }
-        end={
-         selectedBurnRate === undefined
-          ? 0
-          : unit === "eth"
-           ? Format.ethFromWei(selectedBurnRate)
-           : selectedBurnRate / 1000
-        }
-        preserveValue={ true }
-        separator=","
-        suffix={ unit === "usd" ? "K" : "" }
-       />
-      </AmountAnimatedShell>
-     </div>
-     <div className="flex flex-col gap-y-4 lg:text-right">
-      <WidgetTitle>issuance offset</WidgetTitle>
-      <BaseText font="font-roboto" size="text-2xl md:text-3xl lg:text-3xl xl:text-4xl">
-       <CountUp
-        decimals={ 2 }
-        duration={ 0.8 }
-        separator=","
-        end={ issuanceOffset ?? 0 }
-        preserveValue={ true }
-        suffix={ "x" }
-       />
-      </BaseText>
-     </div>
-    </div>
-   </div>
-  </WidgetBackground>
- </WidgetErrorBoundary>
+          >
+            <div
+              className={ `
+                absolute -left-5
+                h-4/5 w-full rounded-[35%] bg-[#FF8D24] md:left-0
+                md:h-3/5
+                md:w-4/5
+              `}
+            ></div>
+          </div>
+        </div>
+        <div className="flex items-baseline justify-between">
+          <WidgetTitle>burn total</WidgetTitle>
+          <TimeFrameIndicator
+            onClickTimeFrame={ onClickTimeFrame }
+            timeFrame={ timeFrame }
+          />
+        </div>
+        <div className="flex flex-col gap-y-4 pt-4">
+          <div className="flex items-center">
+            <AmountAnimatedShell
+              skeletonWidth="9rem"
+              size="text-2xl md:text-3xl lg:text-3xl xl:text-4xl"
+              unitText={ unit === "eth" ? "ETH" : "USD" }
+            >
+              <CountUp
+                decimals={ unit === "eth" ? 2 : 0 }
+                duration={ 0.8 }
+                end={
+                  selectedFeesBurned === undefined
+                    ? 0
+                    : unit === "eth"
+                      ? Format.ethFromWei(selectedFeesBurned)
+                      : selectedFeesBurned
+                }
+                preserveValue={ true }
+                separator=","
+              />
+            </AmountAnimatedShell>
+            <div className="ml-4 h-6 w-6 select-none md:ml-8 lg:h-8 lg:w-8">
+              <Image
+                alt="fire emoji symbolizing ETH burned"
+                src={ fireSvg as StaticImageData }
+              />
+            </div>
+          </div>
+          <div className="flex flex-col justify-between gap-y-4 lg:flex-row">
+            <div className="flex flex-col gap-y-4">
+              <WidgetTitle>burn rate</WidgetTitle>
+              <AmountAnimatedShell
+                skeletonWidth="4rem"
+                size="text-2xl md:text-3xl lg:text-2xl xl:text-4xl"
+                unitText={ unit === "eth" ? "ETH/min" : "USD/min" }
+              >
+                <CountUp
+                  decimals={ unit === "eth" ? 2 : 1 }
+                  duration={ 0.8 }
+                  end={
+                    selectedBurnRate === undefined
+                      ? 0
+                      : unit === "eth"
+                        ? Format.ethFromWei(selectedBurnRate)
+                        : selectedBurnRate / 1000
+                  }
+                  preserveValue={ true }
+                  separator=","
+                  suffix={ unit === "usd" ? "K" : "" }
+                />
+              </AmountAnimatedShell>
+            </div>
+            <div className="flex flex-col gap-y-4 lg:text-right">
+              <WidgetTitle>issuance offset</WidgetTitle>
+              <BaseText
+                font="font-roboto"
+                size="text-2xl md:text-3xl lg:text-2xl xl:text-4xl"
+              >
+                <CountUp
+                  decimals={ 2 }
+                  duration={ 0.8 }
+                  separator=","
+                  end={ issuanceOffset ?? 0 }
+                  preserveValue={ true }
+                  suffix={ "x" }
+                />
+              </BaseText>
+            </div>
+          </div>
+        </div>
+      </WidgetBackground>
+    </WidgetErrorBoundary>
+  );
 };
 
 export default BurnTotal; 

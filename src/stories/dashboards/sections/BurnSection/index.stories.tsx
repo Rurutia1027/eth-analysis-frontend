@@ -19,8 +19,8 @@ const mockOnSetTimeFrame = () => { }
 
 export const Default: Story = {
   args: {
-    timeFrame: "1d" as TimeFrame,
-    onClickTimeFrame: mockOnSetTimeFrame,
+    timeFrame: "d7" as TimeFrame,
+    onClickTimeFrame: mockOnClickTimeFrame,
     onSetTimeFrame: mockOnSetTimeFrame,
   }
 };
