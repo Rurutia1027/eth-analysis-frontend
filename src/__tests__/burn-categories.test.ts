@@ -5,9 +5,7 @@ describe("fetchBurnCategories", () => {
   it("resonse body should be defined and with required field 'blockLag' ", async () => {
     const res = await fetchBurnCategories();
     expect(res).toBeDefined();
-    assert("data" in res, "response body should contain data field");
-    console.log("#fetchBurnCagegories", res.data);
-
+    assert("data" in res, "response body should contain data field");  
     // d1, d7, d30, h1,m5, since_burn, since_merge
     assert("d1" in res.data);
     expect(Array.isArray(res.data.d1)).toBe(true);

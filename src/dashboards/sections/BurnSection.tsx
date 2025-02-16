@@ -42,11 +42,7 @@ const BurnSection: FC<{
             unit={ unit }
           />
           <div className="flex flex-col gap-y-4 lg:col-start-2 lg:row-start-1 lg:row-end-4 lg:max-h-[499px] xl:max-h-[526px]">
-            <BurnLeaderboard
-              onClickTimeFrame={ onClickTimeFrame }
-              timeFrame={ timeFrame }
-              unit={ unit }
-            />
+            {/* <BurnLeaderboard /> */ }
             {/* BurnCategoryWidget */ }
           </div>
           <div className="lg:row-start-2">

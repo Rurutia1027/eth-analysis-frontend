@@ -1,5 +1,6 @@
 import type { CategoryId } from "./burn-categories";
 import type { Linkables } from "./profiles";
+import { TimeFrame } from "../utils/time-frames";
 
 type ContractEntry = {
   address: string;
@@ -72,4 +73,17 @@ export type Leaderboards = {
   leaderboard30d: LeaderboardEntry[];
   leaderboardSinceMerge: LeaderboardEntry[];
   leaderboardSinceBurn: LeaderboardEntry[];
+};
+
+export const leaderboardKeyFromTimeFrame: Record<
+  TimeFrame,
+  keyof Leaderboards
+> = {
+  m5: "leaderboard5m",
+  h1: "leaderboard1h",
+  d1: "leaderboard24h",
+  d7: "leaderboard7d",
+  d30: "leaderboard30d",
+  since_merge: "leaderboardSinceMerge",
+  since_burn: "leaderboardSinceBurn",
 };

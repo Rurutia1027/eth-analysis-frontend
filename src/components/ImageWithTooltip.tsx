@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 import type { FC, RefObject } from "react";
 import { useCallback, useContext, useRef, useState } from "react";
 import Skeleton from "react-loading-skeleton";
-import questionMarkSvg from "../../assets/question-mark-v2.svg";
+import questionMarkSvg from "../assets/question-mark-v2.svg";
 import { FeatureFlagsContext } from "../contexts/FeatureFlagContext";
 
 type ImageWithTooltipProps = {
