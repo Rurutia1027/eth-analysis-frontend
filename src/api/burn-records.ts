@@ -1,7 +1,6 @@
 import * as DateFns from "date-fns"; 
 import mapValues from "lodash/mapValues"; 
 import type { TimeFrame } from "../utils/time-frames";
-import { number } from "io-ts/lib/Guard";
 
 export type BurnRecord = {
  blockNumber: number; 

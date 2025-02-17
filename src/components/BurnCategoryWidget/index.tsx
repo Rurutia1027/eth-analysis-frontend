@@ -8,9 +8,11 @@ import { Leaderboards } from '../../api/leaderboards';
 import { fetchBurnSums } from '../../api/burn-sums';
 import { hoverReducer, initialState } from './hoverReducer';
 import { FeatureFlagsContext } from '../../contexts/FeatureFlagContext';
-import CategorySetmentItem, { CategoryProps } from './CategorySegmentItem';
-import { sortByFeesDesc } from './pipeFunctions';
+import CategorySegmentItem, { CategoryProps } from './CategorySegmentItem';
+import { formatCount, formatFees, sortByFeesDesc } from './pipeFunctions';
+import { categoryDisplayMap } from '../../api/burn-categories';
 import { StaticImageData } from 'next/image';
+import LabelText from '../TextNext/LabelText';
 
 // imported svg images 
 import questionMarkSlateus from "../../assets/question-mark-slateus.svg";
@@ -38,6 +40,7 @@ import mdBubbleChartSlateus from "../../assets/md-bubble-chart-slateus.svg";
 import { timeframeFeesBurnedMap } from '../BlobBurnWidget';
 import { activeCategories } from './CategorySegment';
 import BurnGroupBase from '../BurnGroupBase';
+import CategoryRow from './CategoryRow';
 
 
 export const leaderboardKeyFromTimeFrame: Record<
@@ -163,7 +166,7 @@ const buildMiscCategory = (
     percentOfTotalBurn: 0,
     percentOfTotalBurnUsd: 0,
     onHoverCategory: setHoveringMisc,
-    showHighligh: hoveringMisc,
+    showHighlight: hoveringMisc,
    } as CategoryProps,
   );
 
@@ -216,7 +219,7 @@ const BurnCategoryWidget: FC<Props> = ({
          type: hovering ? "highlight" : "unhighlight",
          category: category.category,
         }),
-       showHighligh: hoverState[ category.category ] ?? false,
+       showHighlight: hoverState[ category.category ] ?? false,
       });
 
      const apiBurnCategories = pipe(
@@ -250,7 +253,7 @@ const BurnCategoryWidget: FC<Props> = ({
           type: hovering ? "highlight" : "unhighlight",
           category: "transfers",
          }),
-        showHighligh: hoverState[ "transfers" ] ?? false
+        showHighlight: hoverState[ "transfers" ] ?? false
        }),
       ),
      );
@@ -279,7 +282,7 @@ const BurnCategoryWidget: FC<Props> = ({
           type: hovering ? "highlight" : "unhighlight",
           category: "creations",
          }),
-        showHighligh: hoverState[ "creations" ] ?? false
+        showHighlight: hoverState[ "creations" ] ?? false
        }),
       )
      );
@@ -306,7 +309,7 @@ const BurnCategoryWidget: FC<Props> = ({
          type: hovering ? "highlight" : "unhighlight",
          category: "blobs",
         }),
-       showHighligh: hoverState[ "blobs" ] ?? false
+       showHighlight: hoverState[ "blobs" ] ?? false
       }),
       ),
      );
@@ -378,20 +381,17 @@ const BurnCategoryWidget: FC<Props> = ({
    title="burn categories"
    timeFrame={ timeFrame }
   >
-   {
-    <div>return value here</div>
-
-   /* { pipe(
+   { pipe(
     combinedCategoriesPerTimeFrame[ timeFrame ],
     O.match(
      () => (
       <div
        className={ `
-        flex h-[394px] w-full items-center justify-center
-        text-center text-lg text-slateus-200
-        `}
+                flex h-[394px] w-full items-center justify-center
+                text-center text-lg text-slateus-200
+              `}
       >
-       time frame unavailable in time frame { timeFrame }
+       time frame unavailable
       </div>
      ),
      (categories) => (
@@ -400,23 +400,58 @@ const BurnCategoryWidget: FC<Props> = ({
         <div className={ `relative flex items-center py-4` }>
          <div className="absolute w-full h-2 rounded-full color-animation bg-slateus-600"></div>
          <div className="flex top-0 left-0 z-10 flex-row items-center w-full">
-          { categories.map((item, index) => {
+          { categories.map((category, index) => {
            return (
-            <CategorySetmentItem
-             key={ item.id }
+            <CategorySegmentItem
+             key={ category.id }
              isFirst={ index === 0 }
              isLast={ index === categories.length - 1 }
-             categoryProps={ item }
+             categoryProps={ category }
             />
            );
           }) }
          </div>
         </div>
        </div>
+       <div className={ `flex flex-col gap-y-4` }>
+        <div
+         className={ `grid items-center ${showCategoryCounts ? "md:grid-cols-3" : "grid-cols-2"
+          }` }
+        >
+         <LabelText>category</LabelText>
+         <div
+          className={ `
+                      text-right
+                      ${showCategoryCounts ? "col-span-1" : "col-span-1"}
+                      ${showCategoryCounts ? "md:mr-8" : ""}
+                    `}
+         >
+          <LabelText>burn</LabelText>
+         </div>
+         <LabelText
+          className={ `hidden text-right ${showCategoryCounts ? "md:block" : ""
+           }` }
+         >
+          transactions
+         </LabelText>
+        </div>
+        { categories.map((category) => (
+         <CategoryRow
+          key={ category.id }
+          amountFormatted={ formatFees(category.fees) }
+          id={ category.id }
+          countFormatted={ formatCount(category.transactionCount) }
+          hovering={ hoverState[ category.id ] ?? false }
+          name={ categoryDisplayMap[ category.id ] }
+          setHovering={ dispatchHover }
+          showCategoryCounts={ showCategoryCounts }
+         />
+        )) }
+       </div>
       </>
-     )
+     ),
     ),
-   ) } */}
+   ) }
   </BurnGroupBase >
  )
 };

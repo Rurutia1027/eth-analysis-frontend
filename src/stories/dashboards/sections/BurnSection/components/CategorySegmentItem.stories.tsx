@@ -37,7 +37,7 @@ const mockCategoryProps: CategoryProps = {
  onHoverCategory: (hovering: boolean) => {
   console.log(`Hovering: ${hovering}`);
  },
- showHighligh: true, // mock a boolean value for showHighlight
+ showHighlight: true, // mock a boolean value for showHighlight
 };
 
 export const Default: Story = {
