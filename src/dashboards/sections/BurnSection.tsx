@@ -9,6 +9,52 @@ import CurrencyControl from "../../components/CurrencyControl";
 import BurnTotal from "../../components/BurnTotal";
 import LatestBlocks from "../../components/LatestBlocks";
 import BurnRecords from "../../components/BurnRecords";
+import { categoryId, CategoryId } from "../../api/burn-categories";
+import { StaticImageData } from "next/image";
+
+// constants declaration 
+export const activeCategories: CategoryId[] = [
+  "nft",
+  "l2",
+  "mev",
+  "defi",
+  "transfers",
+  "creations",
+  "blobs"
+];
+
+
+const alwaysShowImgPercentThreshold = 0.08;
+const separatorWidth = 1;
+// -1 because separators are in between items, +1 because we add misc.
+const separatorCount = activeCategories.length - 1 + 1;
+const skeletonLoadingWidth = 0.1;
+
+
+// define components props types 
+export type CategoryProps = {
+  id: CategoryId;
+  fees: number | undefined;
+  feesUsd: number | undefined;
+  transactionCount: number | undefined;
+  percentOfTotalBurn: number | undefined;
+  percentOfTotalBurnUsd: number | undefined;
+  imgAlt: string;
+  imgName: { colorOn: StaticImageData; colorOff: StaticImageData };
+  onHoverCategory: (hovering: boolean) => void;
+  showHighlight: boolean;
+};
+
+export type CategorySegmentProps = {
+  imgAlt: string;
+  imgName: { colorOn: StaticImageData; colorOff: StaticImageData };
+  onHoverCategory: (hovering: boolean) => void;
+  percentOfTotalBurn: number | undefined;
+  rounded: "left" | "right";
+  showHighlight: boolean;
+};
+
+
 
 const BurnSection: FC<{
   timeFrame: TimeFrame; onClickTimeFrame: OnClick; onSetTimeFrame: OnSetTimeFrame;
