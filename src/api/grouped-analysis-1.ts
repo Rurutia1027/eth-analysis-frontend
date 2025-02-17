@@ -26,7 +26,7 @@ export type BurnRates = {
   burnRateSinceBurnUsd: number;
 };
 
-export type FeesBurns = {
+export type FeesBurned = {
   feesBurned5m: WeiNumber;
   feesBurned5mUsd: number;
   feesBurned1h: WeiNumber;
@@ -75,8 +75,8 @@ export type GroupedAnalysis1 = {
   deflationaryStreak: DeflationaryStreakState;
   deflationaryBlobStreak: DeflationaryStreakState;
   ethPrice: EthPrice | undefined;
-  feesBurned: FeesBurns;
-  blobFeeBurned: FeesBurns;
+  feesBurned: FeesBurned;
+  blobFeeBurns: FeesBurned;
   /** latest first */
   latestBlockFees: LatestBlock[];
   /** latest last */
@@ -92,8 +92,8 @@ export type GroupedAnalysis1F = {
   deflationaryStreak: DeflationaryStreakState;
   deflationaryBlobStreak: DeflationaryStreakState;
   ethPrice: EthPrice | undefined;
-  feesBurns: FeesBurns;
-  blobFeeBurns: FeesBurns;
+  feesBurned: FeesBurned;
+  blobFeeBurns: FeesBurned;
   latestBlockFees: LatestBlock[];
   latestBlockFeesFlipped: LatestBlock[];
   leaderboards: Leaderboards;

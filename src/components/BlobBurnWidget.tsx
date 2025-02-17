@@ -5,7 +5,7 @@ import Image from "next/legacy/image";
 import CountUp from "react-countup";
 import fireSvg from "../assets/fire-own.svg";
 import { AmountAnimatedShell } from "./Amount";
-import type { FeesBurns } from "../api/grouped-analysis-1";
+import type { FeesBurned } from "../api/grouped-analysis-1";
 import { WidgetBackground } from "./WidgetSubcomponents";
 import { decodeGroupedAnalysis1, useGroupedAnalysis1 } from "../api/grouped-analysis-1";
 import type { TimeFrame } from "../utils/time-frames";
@@ -15,7 +15,7 @@ import { BURN_USD_DECIMALS, GWEI_FORMATTING_THRESHOLD, MIN_BURN_DECIMALS } from 
 
 export const timeframeFeesBurnedMap: Record<
   TimeFrame,
-  { eth: keyof FeesBurns; usd: keyof FeesBurns }
+  { eth: keyof FeesBurned; usd: keyof FeesBurned }
 > = {
   m5: { eth: "feesBurned5m", usd: "feesBurned5mUsd" },
   h1: { eth: "feesBurned1h", usd: "feesBurned1hUsd" },
@@ -59,15 +59,15 @@ type Props = {
 export const BlobBurnWidget: FC<Props> = ({ onClickTimeFrame, timeFrame }) => {
   const groupedAnalysis1F = useGroupedAnalysis1();
   const groupedAnalysis1 = decodeGroupedAnalysis1(groupedAnalysis1F);
-  const feesBurns = groupedAnalysis1?.blobFeeBurned;
+  const feesBurned = groupedAnalysis1?.blobFeeBurns;
   const blobFeeBurns =
-    feesBurns === undefined
+    feesBurned === undefined
       ? undefined
-      : feesBurns[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ];
+      : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ];
   const blobFeeBurnUSD =
-    feesBurns === undefined
+    feesBurned === undefined
       ? undefined
-      : feesBurns[ timeframeFeesBurnedMap[ timeFrame ][ "usd" ] ];
+      : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "usd" ] ];
 
   const formatBurnAsGwei =
     blobFeeBurns !== undefined && blobFeeBurns < GWEI_FORMATTING_THRESHOLD;
