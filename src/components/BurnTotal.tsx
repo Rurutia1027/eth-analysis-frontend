@@ -20,7 +20,7 @@ import CountUp from "react-countup";
 import { BaseText } from "./Texts";
 
 const timeframeFeesBurnedMap: Record<TimeFrame,
- { eth: keyof FeesBurned, usd: keyof FeesBurned }> = {
+  { eth: keyof FeesBurned, usd: keyof FeesBurned }> = {
  m5: { eth: "feesBurned5m", usd: "feesBurned5mUsd" },
  h1: { eth: "feesBurned1h", usd: "feesBurned1hUsd" },
  d1: { eth: "feesBurned24h", usd: "feesBurned24hUsd" },
@@ -81,11 +81,11 @@ const BurnTotal: FC<Props> = ({ onClickTimeFrame, timeFrame, unit }) => {
 
  // check whether the unit is in ETH or in USD 
  const selectedFeesBurned =
-  feesBurned === undefined // is remote data records fetched successfully ? 
+   feesBurned === undefined // is remote data records fetched successfully ? 
    ? undefined
    : unit === "eth"
-    ? feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ]
-    : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ unit ] ];
+       ? feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ]
+       : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ unit ] ];
 
  // in ETH / min or USD K / min 
  const selectedBurnRate =

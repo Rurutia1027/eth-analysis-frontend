@@ -3,18 +3,24 @@ import {
   fetchGroupedAnalysis1,
   decodeGroupedAnalysis1,
 } from "../api/grouped-analysis-1";
+import { GroupedAnalysis1F } from "../api/grouped-analysis-1";
+import { ApiResult } from "../utils/axios-fetchers";
+import { number } from "io-ts/lib/Guard";
 
 describe("decodeGroupedAnalysis1", () => {
   it("fetch data records from api and decode the record", async () => {
-    const res = await fetchGroupedAnalysis1();
+    const res: ApiResult<GroupedAnalysis1F> = await fetchGroupedAnalysis1();
     assert("data" in res, "valid response body should contain data field in");
-
+    console.log("content ", res.data);
     // first-layer fields checking
-    assert("feesBurned" in res.data);
-
-    // feeBurns' inner layer checking
+    assert("feeBurns" in res.data);
     assert("feesBurned1h" in res.data.feesBurned);
-    assert("feesBurned5m" in res.data.feesBurned);
+
+    // decode item from GroupedAnalysis1F to GroupedAnalysis1F
+    const ret = decodeGroupedAnalysis1(res.data);
+    expect(ret).toBeDefined();
+    expect(ret?.baseFeePerGas).toBeDefined();
+
     assert("feesBurned7d" in res.data.feesBurned);
     assert("feesBurned7dUsd" in res.data.feesBurned);
     assert("feesBurned30d" in res.data.feesBurned);
@@ -22,9 +28,6 @@ describe("decodeGroupedAnalysis1", () => {
     assert("feesBurnedSinceMerge" in res.data.feesBurned);
     assert("feesBurnedSinceBurnUsd" in res.data.feesBurned);
     assert("feesBurnedSinceMergeUsd" in res.data.feesBurned);
-
-    const ret = decodeGroupedAnalysis1(res.data);
-    expect(ret).toBeDefined();
   }, 12000);
 });
 

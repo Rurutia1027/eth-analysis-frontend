@@ -13,7 +13,7 @@ import TimeFrameIndicator from "./TimeFrameIndicator";
 import type { OnClick } from "./TimeFrameControl";
 import { BURN_USD_DECIMALS, GWEI_FORMATTING_THRESHOLD, MIN_BURN_DECIMALS } from "../constants/eth-units";
 
-const timeframeFeesBurnedMap: Record<
+export const timeframeFeesBurnedMap: Record<
   TimeFrame,
   { eth: keyof FeesBurned; usd: keyof FeesBurned }
 > = {
@@ -59,8 +59,8 @@ type Props = {
 export const BlobBurnWidget: FC<Props> = ({ onClickTimeFrame, timeFrame }) => {
   const groupedAnalysis1F = useGroupedAnalysis1();
   const groupedAnalysis1 = decodeGroupedAnalysis1(groupedAnalysis1F);
-  const feesBurned = groupedAnalysis1?.blobFeeBurned;
-  const blobFeeBurn =
+  const feesBurned = groupedAnalysis1?.blobFeeBurns;
+  const blobFeeBurns =
     feesBurned === undefined
       ? undefined
       : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ];
@@ -70,10 +70,10 @@ export const BlobBurnWidget: FC<Props> = ({ onClickTimeFrame, timeFrame }) => {
       : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "usd" ] ];
 
   const formatBurnAsGwei =
-    blobFeeBurn !== undefined && blobFeeBurn < GWEI_FORMATTING_THRESHOLD;
+    blobFeeBurns !== undefined && blobFeeBurns < GWEI_FORMATTING_THRESHOLD;
   const formattedBurn =
-    blobFeeBurn !== undefined
-      ? blobFeeBurn / (formatBurnAsGwei ? 1e9 : 1e18)
+    blobFeeBurns !== undefined
+      ? blobFeeBurns / (formatBurnAsGwei ? 1e9 : 1e18)
       : undefined;
 
   const burnDecimals =

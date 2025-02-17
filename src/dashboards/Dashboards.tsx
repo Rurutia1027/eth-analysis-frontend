@@ -104,7 +104,7 @@ const Dashboard: FC = () => {
           timeFrame={ timeFrame }
           onClickTimeFrame={ handleClickTimeFrame }
         />
-        <SupplyProjectionSection />
+        {/* <SupplyProjectionSection /> */ }
         <BurnSection
           timeFrame={ timeFrame }
           onClickTimeFrame={ handleClickTimeFrame }

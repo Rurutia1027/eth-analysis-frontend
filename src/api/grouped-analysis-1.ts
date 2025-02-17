@@ -76,7 +76,7 @@ export type GroupedAnalysis1 = {
   deflationaryBlobStreak: DeflationaryStreakState;
   ethPrice: EthPrice | undefined;
   feesBurned: FeesBurned;
-  blobFeeBurned: FeesBurned;
+  blobFeeBurns: FeesBurned;
   /** latest first */
   latestBlockFees: LatestBlock[];
   /** latest last */
@@ -93,7 +93,7 @@ export type GroupedAnalysis1F = {
   deflationaryBlobStreak: DeflationaryStreakState;
   ethPrice: EthPrice | undefined;
   feesBurned: FeesBurned;
-  blobFeeBurned: FeesBurned;
+  blobFeeBurns: FeesBurned;
   latestBlockFees: LatestBlock[];
   latestBlockFeesFlipped: LatestBlock[];
   leaderboards: Leaderboards;
