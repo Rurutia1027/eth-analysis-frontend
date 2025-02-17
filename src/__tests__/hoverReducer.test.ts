@@ -27,4 +27,11 @@ describe("hoverReducer", () => {
     );
     expect(stateAfterUnHighlight["nft"]).toBe(false);
   });
+ 
+ it("should not mutate the previous state", () => {
+   const prevState = { ...initialState };
+   const action: HighlighAction = { type: "highlight", category: "defi" };
+   hoverReducer(prevState, action);
+   expect(prevState["defi"]).toBe(true);
+ });
 });
