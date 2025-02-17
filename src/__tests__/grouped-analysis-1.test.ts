@@ -10,18 +10,18 @@ describe("decodeGroupedAnalysis1", () => {
     assert("data" in res, "valid response body should contain data field in");
 
     // first-layer fields checking
-    assert("feesBurned" in res.data);
+    assert("feesBurns" in res.data);
 
     // feeBurns' inner layer checking
-    assert("feesBurned1h" in res.data.feesBurned);
-    assert("feesBurned5m" in res.data.feesBurned);
-    assert("feesBurned7d" in res.data.feesBurned);
-    assert("feesBurned7dUsd" in res.data.feesBurned);
-    assert("feesBurned30d" in res.data.feesBurned);
-    assert("feesBurnedSinceBurn" in res.data.feesBurned);
-    assert("feesBurnedSinceMerge" in res.data.feesBurned);
-    assert("feesBurnedSinceBurnUsd" in res.data.feesBurned);
-    assert("feesBurnedSinceMergeUsd" in res.data.feesBurned);
+    assert("feesBurned1h" in res.data.feesBurns);
+    assert("feesBurned5m" in res.data.feesBurns);
+    assert("feesBurned7d" in res.data.feesBurns);
+    assert("feesBurned7dUsd" in res.data.feesBurns);
+    assert("feesBurned30d" in res.data.feesBurns);
+    assert("feesBurnedSinceBurn" in res.data.feesBurns);
+    assert("feesBurnedSinceMerge" in res.data.feesBurns);
+    assert("feesBurnedSinceBurnUsd" in res.data.feesBurns);
+    assert("feesBurnedSinceMergeUsd" in res.data.feesBurns);
 
     const ret = decodeGroupedAnalysis1(res.data);
     expect(ret).toBeDefined();

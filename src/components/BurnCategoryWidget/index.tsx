@@ -8,7 +8,7 @@ import { Leaderboards } from '../../api/leaderboards';
 import { fetchBurnSums } from '../../api/burn-sums';
 import { hoverReducer, initialState } from './hoverReducer';
 import { FeatureFlagsContext } from '../../contexts/FeatureFlagContext';
-import { CategoryProps } from './CategorySegmentItem';
+import CategorySetmentItem, { CategoryProps } from './CategorySegmentItem';
 import { sortByFeesDesc } from './pipeFunctions';
 import { StaticImageData } from 'next/image';
 
@@ -37,6 +37,7 @@ import mdBubbleChartOwn from "../../assets/md-bubble-chart-own.svg";
 import mdBubbleChartSlateus from "../../assets/md-bubble-chart-slateus.svg";
 import { timeframeFeesBurnedMap } from '../BlobBurnWidget';
 import { activeCategories } from './CategorySegment';
+import BurnGroupBase from '../BurnGroupBase';
 
 
 export const leaderboardKeyFromTimeFrame: Record<
@@ -178,7 +179,8 @@ const BurnCategoryWidget: FC<Props> = ({
  const groupedAnalysis1 = useGroupedAnalysis1();
  const leaderboard = groupedAnalysis1?.leaderboards?.[
   leaderboardKeyFromTimeFrame[ timeFrame ] ];
- const feesBurned = groupedAnalysis1?.blobFeeBurned;
+ const feesBurned = groupedAnalysis1?.blobFeeBurns;
+
  // TODO: fetchBurnSums now return mock datasets this should be fixed after backend services are done and deployed. 
  const burnSum = fetchBurnSums()[ timeFrame ];
  const [ hoverState, dispatchHover ] = useReducer(hoverReducer, initialState);
@@ -224,6 +226,9 @@ const BurnCategoryWidget: FC<Props> = ({
       O.map(A.map(categoryFromCategories)),
      );
 
+     // data fetched ok 
+     console.log("#apiBurnCategories", apiBurnCategories);
+
      // ethTransfers is a special case that we hack on in the frontend.
      const ethTransfers = pipe(
       leaderboard,
@@ -249,6 +254,9 @@ const BurnCategoryWidget: FC<Props> = ({
        }),
       ),
      );
+
+     // date conveted ok 
+     console.log("#ethTransfers", ethTransfers);
 
      // contractCreations is a special case that we hack on in the frontend.
      const contractDeployments = pipe(
@@ -276,6 +284,9 @@ const BurnCategoryWidget: FC<Props> = ({
       )
      );
 
+     // date conveted ok 
+     console.log("#contractDeployments", contractDeployments);
+
      // manipulate blobFees here
      // convert blobFees into CategoryProps()
      const blobFees = pipe(
@@ -300,6 +311,11 @@ const BurnCategoryWidget: FC<Props> = ({
       ),
      );
 
+     // data conveted not ok 
+     console.log("#feesBurned", feesBurned);
+     console.log("#groupedAnalysis1", groupedAnalysis1);
+     console.log("#blobFees", blobFees);
+
      // convert burnCategories into miscCategory here 
      const miscCategory = pipe(
       burnCategories,
@@ -315,6 +331,9 @@ const BurnCategoryWidget: FC<Props> = ({
        hoverState[ "misc" ] ?? false
       )),);
 
+     // date conveted ok 
+     console.log("#miscCategory", miscCategory); 
+
 
      // here we combine all categories that locates in time frame = current pipe's timeFrame together 
      const combinedCategories = pipe(
@@ -329,12 +348,20 @@ const BurnCategoryWidget: FC<Props> = ({
       ),
      );
 
+
+     // ok here 
+     console.log("#combinedCategories", combinedCategories); 
+
      // organize different timeFrames(5m, 1d, 7d, 30d, since_burn, since_merge) correspoinding combined categories 
      // together at the end of the timeFrame pipe layer 
-     return [ timeFrame, combinedCategories ] as [
+     const ret = [ timeFrame, combinedCategories ] as [
       TimeFrame,
       O.Option<CategoryProps[]>,
      ];
+     console.log("#combinedCategories", combinedCategories);
+     console.log("#timeFrame", timeFrame);
+     console.log("#ret", ret);
+     return ret; 
     }), Record.fromEntries),
    [ burnCategories,
     burnSum.sum.eth,
@@ -343,8 +370,54 @@ const BurnCategoryWidget: FC<Props> = ({
     leaderboard,
     sortByFeesDesc
    ]);
+
  return (
-  <div>index</div>
+  <BurnGroupBase
+   backgroundClassName="h-[624px]"
+   onClickTimeFrame={ onClickTimeFrame }
+   title="burn categories"
+   timeFrame={ timeFrame }
+  >
+   {
+    <div>return value here</div>
+
+   /* { pipe(
+    combinedCategoriesPerTimeFrame[ timeFrame ],
+    O.match(
+     () => (
+      <div
+       className={ `
+        flex h-[394px] w-full items-center justify-center
+        text-center text-lg text-slateus-200
+        `}
+      >
+       time frame unavailable in time frame { timeFrame }
+      </div>
+     ),
+     (categories) => (
+      <>
+       <div>
+        <div className={ `relative flex items-center py-4` }>
+         <div className="absolute w-full h-2 rounded-full color-animation bg-slateus-600"></div>
+         <div className="flex top-0 left-0 z-10 flex-row items-center w-full">
+          { categories.map((item, index) => {
+           return (
+            <CategorySetmentItem
+             key={ item.id }
+             isFirst={ index === 0 }
+             isLast={ index === categories.length - 1 }
+             categoryProps={ item }
+            />
+           );
+          }) }
+         </div>
+        </div>
+       </div>
+      </>
+     )
+    ),
+   ) } */}
+  </BurnGroupBase >
  )
 };
 

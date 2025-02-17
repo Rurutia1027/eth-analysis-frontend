@@ -5,7 +5,7 @@ import Image from "next/legacy/image";
 import CountUp from "react-countup";
 import fireSvg from "../assets/fire-own.svg";
 import { AmountAnimatedShell } from "./Amount";
-import type { FeesBurned } from "../api/grouped-analysis-1";
+import type { FeesBurns } from "../api/grouped-analysis-1";
 import { WidgetBackground } from "./WidgetSubcomponents";
 import { decodeGroupedAnalysis1, useGroupedAnalysis1 } from "../api/grouped-analysis-1";
 import type { TimeFrame } from "../utils/time-frames";
@@ -15,7 +15,7 @@ import { BURN_USD_DECIMALS, GWEI_FORMATTING_THRESHOLD, MIN_BURN_DECIMALS } from 
 
 export const timeframeFeesBurnedMap: Record<
   TimeFrame,
-  { eth: keyof FeesBurned; usd: keyof FeesBurned }
+  { eth: keyof FeesBurns; usd: keyof FeesBurns }
 > = {
   m5: { eth: "feesBurned5m", usd: "feesBurned5mUsd" },
   h1: { eth: "feesBurned1h", usd: "feesBurned1hUsd" },
@@ -59,21 +59,21 @@ type Props = {
 export const BlobBurnWidget: FC<Props> = ({ onClickTimeFrame, timeFrame }) => {
   const groupedAnalysis1F = useGroupedAnalysis1();
   const groupedAnalysis1 = decodeGroupedAnalysis1(groupedAnalysis1F);
-  const feesBurned = groupedAnalysis1?.blobFeeBurned;
-  const blobFeeBurn =
-    feesBurned === undefined
+  const feesBurns = groupedAnalysis1?.blobFeeBurned;
+  const blobFeeBurns =
+    feesBurns === undefined
       ? undefined
-      : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ];
+      : feesBurns[ timeframeFeesBurnedMap[ timeFrame ][ "eth" ] ];
   const blobFeeBurnUSD =
-    feesBurned === undefined
+    feesBurns === undefined
       ? undefined
-      : feesBurned[ timeframeFeesBurnedMap[ timeFrame ][ "usd" ] ];
+      : feesBurns[ timeframeFeesBurnedMap[ timeFrame ][ "usd" ] ];
 
   const formatBurnAsGwei =
-    blobFeeBurn !== undefined && blobFeeBurn < GWEI_FORMATTING_THRESHOLD;
+    blobFeeBurns !== undefined && blobFeeBurns < GWEI_FORMATTING_THRESHOLD;
   const formattedBurn =
-    blobFeeBurn !== undefined
-      ? blobFeeBurn / (formatBurnAsGwei ? 1e9 : 1e18)
+    blobFeeBurns !== undefined
+      ? blobFeeBurns / (formatBurnAsGwei ? 1e9 : 1e18)
       : undefined;
 
   const burnDecimals =
