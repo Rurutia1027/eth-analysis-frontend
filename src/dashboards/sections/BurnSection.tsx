@@ -9,6 +9,7 @@ import CurrencyControl from "../../components/CurrencyControl";
 import BurnTotal from "../../components/BurnTotal";
 import LatestBlocks from "../../components/LatestBlocks";
 import BurnRecords from "../../components/BurnRecords";
+import BurnCategoryWidget from "../../components/BurnCategoryWidget";
 
 const BurnSection: FC<{
   timeFrame: TimeFrame; onClickTimeFrame: OnClick; onSetTimeFrame: OnSetTimeFrame;
@@ -47,7 +48,10 @@ const BurnSection: FC<{
               timeFrame={ timeFrame }
               unit={ unit }
             />
-            {/* BurnCategoryWidget */ }
+            <BurnCategoryWidget
+              onClickTimeFrame={ onClickTimeFrame }
+              timeFrame={ timeFrame }
+            />
           </div>
           <div className="lg:row-start-2">
             <LatestBlocks unit={ unit } />
