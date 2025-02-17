@@ -13,7 +13,7 @@ import TimeFrameIndicator from "./TimeFrameIndicator";
 import type { OnClick } from "./TimeFrameControl";
 import { BURN_USD_DECIMALS, GWEI_FORMATTING_THRESHOLD, MIN_BURN_DECIMALS } from "../constants/eth-units";
 
-const timeframeFeesBurnedMap: Record<
+export const timeframeFeesBurnedMap: Record<
   TimeFrame,
   { eth: keyof FeesBurned; usd: keyof FeesBurned }
 > = {
